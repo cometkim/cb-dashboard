@@ -30,7 +30,7 @@
 </div>
 
 <script type="text/javascript">
-    var QueryConditionWidget_${chartId} = QueryConditionWidget_${chartId} || xbeamerchart.QueryConditionWidget();
+    var QueryConditionWidget_${chartId} = xbeamerchart.QueryConditionWidget();
 
     $(function() {
         var widgetContainer = $(".XBeamerWidget-QueryCondition-${chartId}");
@@ -39,14 +39,16 @@
         var queryString = 'null';
         var advanced = false;
 
-        QueryConditionWidget_${chartId}.init(queryId, queryString, advanced, widgetContainer, resultContainer, {
-            "getProjectsUrl" : contextPath + "/ajax/queryCondition/getProjects.spr",
-            "getTrackersUrl" : contextPath + "/ajax/queryCondition/getTrackers.spr",
-            "getFieldsUrl" : contextPath + "/ajax/queryCondition/getFields.spr",
-            "getFieldChoicesUrl" : contextPath + "/ajax/queryCondition/getFieldChoices.spr",
-            "getUsersUrl" : contextPath + "/ajax/queryCondition/getUsers.spr",
-            "getQueryStructureUrl" : contextPath + "/ajax/queryCondition/getQueryStructure.spr",
-            "getExistingReferencesUrl" : contextPath + "/ajax/queryCondition/getExistingReferenceData.spr"
-        });
+        if(widgetContainer.find('.projectSelector').length == 0) {
+            QueryConditionWidget_${chartId}.init(queryId, queryString, advanced, widgetContainer, resultContainer, {
+                "getProjectsUrl": contextPath + "/ajax/queryCondition/getProjects.spr",
+                "getTrackersUrl": contextPath + "/ajax/queryCondition/getTrackers.spr",
+                "getFieldsUrl": contextPath + "/ajax/queryCondition/getFields.spr",
+                "getFieldChoicesUrl": contextPath + "/ajax/queryCondition/getFieldChoices.spr",
+                "getUsersUrl": contextPath + "/ajax/queryCondition/getUsers.spr",
+                "getQueryStructureUrl": contextPath + "/ajax/queryCondition/getQueryStructure.spr",
+                "getExistingReferencesUrl": contextPath + "/ajax/queryCondition/getExistingReferenceData.spr"
+            });
+        }
     });
 </script>
