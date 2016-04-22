@@ -104,8 +104,6 @@ public abstract class XBeamerPlugin extends AbstractCodeBeamerWikiPlugin {
             velocityContext.put("content", content);
 
         }else{
-            this.setShapeColspan(5);
-            this.setShapeRowspan(3);
             this.populateWidgetContext(velocityContext);
         }
 
