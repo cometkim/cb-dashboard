@@ -3,7 +3,6 @@ package com.intland.codebeamer.wiki.plugins;
 import com.architectgroup.xbeamerchart.plugin.XBeamerChartPlugin;
 import com.architectgroup.xbeamerchart.widget.XBeamerBasicInputWidget;
 import com.architectgroup.xbeamerchart.widget.XBeamerColorPickerWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerInputTextWidget;
 import com.architectgroup.xbeamerchart.widget.XBeamerQueryConditionWidget;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
 import com.ecyrd.jspwiki.WikiContext;
@@ -61,6 +60,9 @@ public class XBeamerQueryTilePlugin extends XBeamerChartPlugin {
 
     @Override
     protected void initParameterWidgets() {
+        this.setShapeColspan(5);
+        this.setShapeRowspan(3);
+
         WikiContext context = this.getWikiContext();
 
         cbQLWidget = new XBeamerQueryConditionWidget(context);
@@ -125,7 +127,7 @@ public class XBeamerQueryTilePlugin extends XBeamerChartPlugin {
         velocityContext.put("countText", countText);
         velocityContext.put("fontSize", fontSize);
 
-        velocityContext.put("queryUrl", this.getContextPath() + "/proj/queries.spr?cbQl=" + cbQl);
+        velocityContext.put("queryUrl", this.getContextPath() + "/proj/query?cbQl=" + cbQl);
         velocityContext.put("title", title);
         velocityContext.put("suffix", suffix);
         velocityContext.put("color", color);
