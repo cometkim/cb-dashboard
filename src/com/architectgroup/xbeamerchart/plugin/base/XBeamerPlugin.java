@@ -52,8 +52,8 @@ public abstract class XBeamerPlugin extends AbstractCodeBeamerWikiPlugin {
         this.widgets = new LinkedHashMap<>();
         this.defaultValues = new HashMap<>();
         this.useFrame = true;
-        this.shapeRowspan = 3;
-        this.shapeColspan = 5;
+        this.shapeRowspan = 1;
+        this.shapeColspan = 1;
     }
 
     /**
