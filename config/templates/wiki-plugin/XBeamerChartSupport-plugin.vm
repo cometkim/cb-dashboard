@@ -33,15 +33,23 @@
     #end
 </aside>
 
-<a href="#" class="actionLink" id="XBeamer-sidebutton">Add Chart</a>
+<a href="#" class="actionLink XBeamerMenu" id="XBeamer-sidebutton">Add Chart</a>
+<a href="#" class="actionLink XBeamerMenu" id="XBeamer-reorder">Reorder</a>
 
-<a href="#" class="actionLink" id="XBeamer-reorder">Reorder</a>
+<a href="#" class="actionLink childof-reorder" id="XBeamer-reorder-save">Save</a>
+<a href="#" class="actionLink childof-reorder" id="XBeamer-reorder-cancel">Cancel</a>
 
 ## Wikipage Contents
 <div class="XBeamer-contents">
 #foreach($pluginContent in $pluginContents)
     $pluginContent
 #end
+</div>
+
+<div id="XBeamer-trash-container">
+    <div class="XBeamer-trash">
+        Drop chart here to remove.
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -74,24 +82,46 @@
 
         $('#XBeamer-sidebutton').click(function(){
             colapse = !colapse;
+            $('#XBeamer-reorder').css('display', colapse ? 'block' : 'none');
             $('#XBeamer-sidebutton').text(colapse ? 'Add Chart' : 'Cancel');
             $('#XBeamer-sidebar').stop().animate({right: colapse ? '-${width}' : '0'}, 200, function(){});
         });
 
         var ss_config = {
             align: 'left',
-            enableDrag: false
+            enableDrag: false,
+            columns: 9
         };
 
         $('.XBeamer-contents').shapeshift(ss_config);
 
         $('#XBeamer-reorder').click(function(){
             colapse = true;
-            $('#XBeamer-sidebutton').text(colapse ? 'Add Chart' : 'Cancel');
-            $('#XBeamer-sidebar').stop().animate({right: colapse ? '-${width}' : '0'}, 200, function(){});
+            $('#XBeamer-sidebutton').text('Add Chart');
+            $('#XBeamer-sidebar').stop().animate({right: '-${width}'}, 200, function(){});
+
+            $('.XBeamerMenu').each(function(){ $(this).css('display', 'none'); });
+            $('.childof-reorder').each(function(){ $(this).css('display', 'block'); });
 
             ss_config.enableDrag = true;
             $('.XBeamer-contents').shapeshift(ss_config);
+
+            $('.XBeamer-trash').css('display', 'block').shapeshift({
+                autoHeight: false,
+                enableTrash: true,
+                colWidth: 1690
+            });
+        });
+
+        $('#XBeamer-reorder-save').click(function(){
+            location.reload(true);
+        });
+
+        $('#XBeamer-reorder-cancel').click(function(){
+            $('.XBeamerMenu').each(function(){ $(this).css('display', 'block'); });
+            $('.childof-reorder').each(function(){ $(this).css('display', 'none'); });
+            $('.XBeamer-contents').trigger('ss-destroy');
+            location.reload(true);
         });
     });
 </script>
@@ -132,6 +162,22 @@
         text-align: center;
     }
 
+    #XBeamer-reorder-cancel{
+        display: none;
+        position: absolute;
+        top: 7px;
+        right: 0px;
+        text-align: center;
+    }
+
+    #XBeamer-reorder-save{
+        display: none;
+        position: absolute;
+        top: 7px;
+        right: 80px;
+        text-align: center;
+    }
+
     .XBeamer-chart-container{
         margin: 5px;
     }
@@ -161,5 +207,26 @@
 
     .actionBar > a{
         margin-right: 0 !important;
+    }
+
+    #XBeamer-trash-container {
+        position: absolute;
+        right: 15px;
+        left: 15px;
+        bottom: 10px;
+        height: 100px;
+    }
+
+    .XBeamer-trash {
+        text-align: center;
+        display: none;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border: 1px dashed red;
+    }
+
+    .XBeamer-trash:hover{
+        background: rgba(255, 0, 0, 0.5);
     }
 </style>
