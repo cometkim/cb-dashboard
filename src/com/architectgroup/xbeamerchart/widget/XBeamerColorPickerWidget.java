@@ -11,6 +11,8 @@ import org.apache.velocity.VelocityContext;
 public class XBeamerColorPickerWidget extends XBeamerWidget {
     public XBeamerColorPickerWidget(WikiContext ctx) {
         super(ctx, "xbeamerchart/widgets/ColorPicker-widget.vm");
+        this.cssStyle("width", "200px");
+        this.cssStyle("height", "50px");
     }
 
     @Override

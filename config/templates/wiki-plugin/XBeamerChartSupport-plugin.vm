@@ -80,8 +80,7 @@
 
         var ss_config = {
             align: 'left',
-            enableDrag: false,
-            columns: 10
+            enableDrag: false
         };
 
         $('.XBeamer-contents').shapeshift(ss_config);

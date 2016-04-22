@@ -12,6 +12,8 @@ import javax.annotation.Nullable;
 import javax.servlet.ServletContext;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-03-21.
@@ -34,6 +36,8 @@ public abstract class XBeamerWidget{
     private String argument;
     private String defaultArgument;
 
+    private Map<String, String> styleMap;
+
     @Deprecated
     public XBeamerWidget(UserDto user, String fileName) {
         this.user = user;
@@ -53,6 +57,8 @@ public abstract class XBeamerWidget{
         this.user = ((CodeBeamerWikiContext)ctx).getUser();
         this.fileName = fileName;
         this.selector = null;
+
+        this.styleMap = new HashMap<>();
     }
 
     public WikiContext getWikiContext(){ return this.wikiContext; }
@@ -82,6 +88,11 @@ public abstract class XBeamerWidget{
 
     public boolean isRequired() { return this.required; }
     public void setRequired(boolean required) { this.required = required; }
+
+    public String cssStyle(String style){ return this.styleMap.get(style); }
+    public void cssStyle(String style, String value){ this.styleMap.put(style, value); }
+
+    public Map<String, String> getCssStyles() { return this.styleMap; }
 
     public ApplicationContext getApplicationContext() {
         return WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());

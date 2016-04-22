@@ -1,7 +1,6 @@
 <div class="XBeamer-widgetbox">
     <div class="header">
         <h3>$chartName</h3>
-        <span class="ui-icon ui-icon-minusthick"></span>
     </div>
     <div class="content">
     #foreach($widget in $widgets.values())

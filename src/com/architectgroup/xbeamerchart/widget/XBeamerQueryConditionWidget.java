@@ -31,6 +31,9 @@ public class XBeamerQueryConditionWidget extends XBeamerWidget {
     public XBeamerQueryConditionWidget(WikiContext ctx) {
         super(ctx, "xbeamerchart/widgets/QueryCondition-widget.vm");
         // this.setSelector("input"); // Deprecated
+        this.cssStyle("width", "100%");
+        this.cssStyle("float", "none");
+        this.cssStyle("margin-bottom", "20px");
     }
 
     @Override

@@ -23,6 +23,8 @@ public class XBeamerProjectSelectWidget extends XBeamerWidget {
     public XBeamerProjectSelectWidget(WikiContext ctx, boolean multiple){
         super(ctx, "xbeamerchart/widgets/ProjectSelect-widget.vm");
         this.multiple = multiple;
+        this.cssStyle("width", "200px");
+        this.cssStyle("height", "50px");
     }
 
     @Override

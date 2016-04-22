@@ -36,6 +36,8 @@ public class XBeamerTrackerSelectWidget extends XBeamerWidget {
         super(ctx, "xbeamerchart/widgets/TrackerSelect-widget.vm");
         this.types = types;
         this.multiple = multiple;
+        this.cssStyle("width", "200px");
+        this.cssStyle("height", "50px");
     }
 
     @Override

@@ -1,8 +1,8 @@
 #parse("xbeamerchart/includes/widget-util.vm")
 
-<div class="XBeamerWidget">
+<div class="XBeamerWidget" #widgetHelp($this) #widgetStyles($this)>
     #widgetLabel($this)
-    #widgetHelp($this)
+
     <div class="headerBody">
         <div class="conditionSelector">
             <div class="XBeamerWidget-QueryCondition XBeamerWidget-QueryCondition-${chartId}" id="queryConditionWidgetContainer">
@@ -30,7 +30,7 @@
 </div>
 
 <script type="text/javascript">
-    var QueryConditionWidget_${chartId} = xbeamerchart.QueryConditionWidget();
+    var QueryConditionWidget_${chartId} = QueryConditionWidget_${chartId} || xbeamerchart.QueryConditionWidget();
 
     $(function() {
         var widgetContainer = $(".XBeamerWidget-QueryCondition-${chartId}");

@@ -70,6 +70,18 @@
   & > .content{
     padding: 20px;
   }
+
+  .widget-wrapper{
+    float: left;
+  }
+
+  .XBeamerSubmit{
+    position: absolute;
+    left: 20px;
+    top: auto;
+    right: auto;
+    bottom: 10px;
+  }
 }
 
 .ui-icon-minusthick{
@@ -77,11 +89,17 @@
 }
 
 .XBeamerWidget{
+  float: left;
+
   & > .label{
     text-align: left;
   }
 
   .headerBody {
     padding: 0;
+
+    .conditionSelector {
+      width: inherit;
+    }
   }
 }

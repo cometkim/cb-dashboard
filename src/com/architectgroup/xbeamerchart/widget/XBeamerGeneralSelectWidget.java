@@ -19,6 +19,8 @@ public class XBeamerGeneralSelectWidget extends XBeamerWidget {
         super(ctx, "xbeamerchart/widgets/GeneralSelect-widget.vm");
         this.options = options;
         this.multiple = multiple;
+        this.cssStyle("width", "200px");
+        this.cssStyle("height", "50px");
     }
 
     @Override

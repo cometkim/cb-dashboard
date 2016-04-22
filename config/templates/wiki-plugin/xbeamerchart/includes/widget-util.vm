@@ -8,7 +8,13 @@
 #end
 
 #macro(widgetHelp $widget)
-    #if("$!widget.shortDescription" != "")
-    <span class="help ui-icon ui-icon-help" title="$widget.shortDescription"></span>
-    #end
+    #if("$!widget.shortDescription" != "")title="$widget.shortDescription"#end
+#end
+
+#macro(widgetStyles $widget)
+    #if(!$widget.cssStyles.isEmpty())style="#foreach($cssStyle in $!widget.cssStyles.keySet())$cssStyle: $widget.cssStyles.get($cssStyle);#end"#end
+#end
+
+#macro(widgetSelector $param $id)
+    #XBeamerWidget-${param}-${chartId}
 #end

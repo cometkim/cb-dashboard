@@ -39,6 +39,8 @@ public class XBeamerBasicInputWidget extends XBeamerWidget {
     public XBeamerBasicInputWidget(WikiContext context, Type type) {
         super(context, "xbeamerchart/widgets/BasicInput-widget.vm");
         this.type = type;
+        this.cssStyle("width", "200px");
+        this.cssStyle("height", "50px");
     }
 
     @Override

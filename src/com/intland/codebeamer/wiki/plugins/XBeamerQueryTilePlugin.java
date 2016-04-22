@@ -60,8 +60,8 @@ public class XBeamerQueryTilePlugin extends XBeamerChartPlugin {
 
     @Override
     protected void initParameterWidgets() {
-        this.setShapeColspan(5);
-        this.setShapeRowspan(3);
+        this.setShapeColspan(3);
+        this.setShapeRowspan(2);
 
         WikiContext context = this.getWikiContext();
 

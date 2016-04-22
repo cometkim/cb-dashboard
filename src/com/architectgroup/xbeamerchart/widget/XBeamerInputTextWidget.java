@@ -8,6 +8,7 @@ import org.apache.velocity.VelocityContext;
 /**
  * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-03-21.
  */
+@Deprecated
 public class XBeamerInputTextWidget extends XBeamerWidget {
     //private String label;
 
