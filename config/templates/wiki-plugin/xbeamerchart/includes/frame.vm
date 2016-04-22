@@ -1,0 +1,19 @@
+<div class="XBeamer-plugin $pluginName" id="$chartId" data-ss-colspan='$colspan' data-ss-rowspan='$rowspan'>
+#if($initialized)
+    #if($useFrame)
+        <div class="XBeamer-widgetbox">
+            <div class="header">
+                <h3>$chartName</h3>
+                <span class="ui-icon ui-icon-minusthick"></span>
+            </div>
+            <div class="content">
+                $content
+            </div>
+        </div>
+    #else
+        $content
+    #end
+#else
+    #parse("xbeamerchart/includes/widget-box.vm")
+#end
+</div>

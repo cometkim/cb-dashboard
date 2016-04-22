@@ -1,0 +1,9 @@
+<div class="XBeamerChart-QueryTile" style="background-color: $color">
+    <a href="$queryUrl">
+        <h2 class="title truncated-text-ellipsis">$title</h2>
+        <div class="number-wrapper">
+            <div class="big-count truncated-text-ellipsis" style="font-size: ${fontSize}px">$countText</div>
+        </div>
+        <span class="footer truncated-text-ellipsis">$suffix</span>
+    </a>
+</div>

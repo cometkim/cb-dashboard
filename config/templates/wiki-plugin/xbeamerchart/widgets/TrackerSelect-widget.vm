@@ -1,0 +1,17 @@
+#parse("xbeamerchart/includes/widget-util.vm")
+
+<div class="XBeamerWidget">
+    #widgetLabel($this)
+    #widgetHelp($this)
+    <div class="select TrackerSelect">
+        <select class="XBeamerWidget-${multiple}select with-filter" id="XBeamerWidget-${param}-${chartId}">
+        #foreach($project in $trackers.keySet())
+            <optgroup label="$project.name">
+            #foreach($tracker in $trackers.get($project))
+                <option value="$tracker.id">$tracker.name</option>
+            #end
+            </optgroup>
+        #end
+        </select>
+    </div>
+</div>

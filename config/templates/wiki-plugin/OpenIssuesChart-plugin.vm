@@ -1,0 +1,63 @@
+<script>
+    $(function () {
+        $('#OpenIssuesPlugin_chart').highcharts({
+            chart: {
+                type: 'bar',
+            },
+            title: {
+                text: 'Open Issues for All Projects'
+            },
+            xAxis: {
+                categories: $categories,
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    align: 'high'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' items',
+                shared: true
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 50,
+                floating: true,
+                borderWidth: 1,
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Requirement',
+                data: $data.get("Requirement"),
+            },{
+                name: 'Task',
+                data: $data.get("Task"),
+            },{
+                name: 'Test Run',
+                data: $data.get("Test Run"),
+            },{
+                name: 'Bug',
+                data: $data.get("Bug"),
+            }]
+        });
+    });
+</script>
+
+<div class="wikichartbox">
+    <div id="OpenIssuesPlugin_chart" style="min-width: 300px; margin: 0 auto"></div>
+</div>

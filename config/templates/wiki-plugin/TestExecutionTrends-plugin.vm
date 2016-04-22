@@ -1,0 +1,63 @@
+<script type="text/javascript">
+    $(function () {
+        $('#TestExecutionTrends-${chartId}').highcharts({
+            chart: {
+                type: 'column'
+            },
+            credits: {
+                enabled: false
+            },
+            title: {
+                text: "$title"
+            },
+            xAxis: {
+                type: 'datetime'
+            },
+            yAxis: {
+                title: '',
+                min: 0,
+                stackLabels: {
+                    enabled: true,
+                    style: {
+                        fontWeight: 'bold',
+                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                    }
+                }
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.y} runs</b> ({point.percentage:.1f}%)<br/>Total: {point.stackTotal} runs'
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'normal'
+                },
+                series:{
+                    pointWidth: 13
+                }
+            },
+            series: [
+            #if("$!passed" != ""){
+                name: 'Passed',
+                data: $passed,
+                color: '#00a85d'
+            },#end #if("$!partlyPassed" != ""){
+                name: 'Partly Passed',
+                data: $partlyPassed,
+                color: '#00bf6a'
+            },#end #if("$!failed" != ""){
+                name: 'Failed',
+                data: $failed,
+                color: '#b31317'
+            },#end #if("$!blocked" != ""){
+                name: 'Blocked',
+                data: $blocked,
+                color: '#777'
+            }#end
+            ]
+        });
+    });
+</script>
+
+<div class="wikichartbox">
+    <div id="TestExecutionTrends-${chartId}" style="height: 400px; width:600px; margin: 0 auto"></div>
+</div>

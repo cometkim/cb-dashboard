@@ -1,0 +1,51 @@
+<style>
+    .ui-progressbar {
+        position: relative;
+        height:17px;
+    }
+    .progress-label {
+        position: absolute;
+        left: 49%;
+        top: 1px;
+    }
+</style>
+
+<script>
+    $(function() {
+        $(".progressbar").each(function() {
+            console.log($(this).attr("percent"));
+            $(this).progressbar({
+                value: parseInt($(this).attr("percent"))
+            });
+        })
+    });
+</script>
+
+#if ($error)
+<span class="error">$error</span>
+#else
+<div class="wikichartbox">
+    <h4>$params.title <span class="small">(Include: $params.includeString) (Exclude: $params.excludeString)</span></h4>
+    <table class="embedded">
+        <thead>
+        <tr>
+            <th></th>
+            <th class="number">Count</th>
+            <th class="number">Percentage</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            #foreach($key in $statisticMap.keySet())
+            <tr>
+                <td>$key</td>
+                <td class="number">$statisticMap.get($key).count</td>
+                <td class="number">
+                    <div class="progressbar" percent="$statisticMap.get($key).percentage"><div class="progress-label">$statisticMap.get($key).percentage%</div></div>
+                </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>
+#end

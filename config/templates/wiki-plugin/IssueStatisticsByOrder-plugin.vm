@@ -1,0 +1,93 @@
+<div class="wikichartbox">
+    <h4>$!title</h4>
+
+    #if($no_issue)
+    <div class="no_issue">Nothing to display.</div>
+
+    #else
+    <table class="embedded IssueStatisticsByOrder">
+        #if($maxOrder > 1)
+            #set($orders = [1..$maxOrder])
+        #else
+            #set($orders = [$maxOrder])
+        #end
+
+        <thead>
+        <tr>
+            <th class="left-end">$orderBy:</th>
+            #foreach($order in $orders)
+            <th class="first-of-order" colspan="$severities.size()">#if($maxOrder < 1) 0 #else $order #end</th>
+            #end
+
+        </tr>
+        <tr>
+            <th class="left-end">Status / Severity</th>
+            #foreach($order in $orders)
+                #foreach($severity in $severities)
+                <th class="severity #if($velocityCount == 1) first-of-order #end">$severity.name</th>
+                #end
+            #end
+        </tr>
+        </thead>
+
+        <tbody>
+        #foreach($status in $statuses)
+        <tr>
+            <th class="status cell left-end">$issueStatusStyles.getStyleForStatus($status, true).renderHtml($status.name)</th>
+            #foreach($order in $orders)
+                #foreach($severity in $severities)
+                    #set($count = "")
+                    #set($count = $!countTable["${status.name};${order};${severity.name}"])
+                    <td class="number cell #if($velocityCount == 1) first-of-order #end">#if("$!count" != "") $count #else -- #end</td>
+                #end
+            #end
+        </tr>
+        #end
+        </tbody>
+
+        <tfoot>
+        <tr>
+            <th class="total">Sub Total</th>
+            #foreach($order in $orders)
+                #foreach($severity in $severities)
+                    #set($count = "")
+                    #set($count = $!countTable["${order};${severity.name}"])
+                    <th class="total number #if($velocityCount == 1) first-of-order #end">#if("$!count" != "") $count #else 0 #end</th>
+                #end
+            #end
+        </tr>
+        <tr>
+            <th class="total">Total</th>
+            #foreach($order in $orders)
+                #set($count = "")
+                #set($count = $!countTable["${order}"])
+                <th colspan="$severities.size()" class="total number first-of-order">#if("$!count" != "") $count #else 0 #end</th>
+            #end
+        </tr>
+        </tfoot>
+    </table>
+    #end
+</div>
+
+<style type="text/css">
+    .IssueStatisticsByOrder .left-end{
+    }
+
+    .IssueStatisticsByOrder .total{
+        border-bottom: 1px solid #d1d1d1;
+        text-align: center;
+    }
+
+    .IssueStatisticsByOrder .cell{
+        border-bottom: 1px solid #d1d1d1 !important;
+    }
+
+    .IssueStatisticsByOrder th.status{
+        width: 120px;
+        text-align: center !important;
+    }
+
+    td.first-of-order, th.first-of-order{
+        border-left: 1px solid #d1d1d1;
+    }
+</style>

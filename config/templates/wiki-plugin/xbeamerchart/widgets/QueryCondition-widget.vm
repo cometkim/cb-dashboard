@@ -1,0 +1,52 @@
+#parse("xbeamerchart/includes/widget-util.vm")
+
+<div class="XBeamerWidget">
+    #widgetLabel($this)
+    #widgetHelp($this)
+    <div class="headerBody">
+        <div class="conditionSelector">
+            <div class="XBeamerWidget-QueryCondition XBeamerWidget-QueryCondition-${chartId}" id="queryConditionWidgetContainer">
+                <table class="queryCondition">
+                    <tbody>
+                        <tr>
+                            <td class="conditions">
+                                <span class="selectorSection">
+                                    <span class="addButton">&nbsp</span>
+                                    <span id="ajaxLoadingImg"><img src="/cb/images/ajax-loading_16.gif" /></span>
+                                </span>
+                                <span class="inputSection">
+                                    <input type="text" id="XBeamerWidget-${param}-${chartId}">
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="advancedLink">
+            <a href="#">Advanced</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var QueryConditionWidget_${chartId} = xbeamerchart.QueryConditionWidget();
+
+    $(function() {
+        var widgetContainer = $(".XBeamerWidget-QueryCondition-${chartId}");
+        var resultContainer = null;
+        var queryId = null;
+        var queryString = 'null';
+        var advanced = false;
+
+        QueryConditionWidget_${chartId}.init(queryId, queryString, advanced, widgetContainer, resultContainer, {
+            "getProjectsUrl" : contextPath + "/ajax/queryCondition/getProjects.spr",
+            "getTrackersUrl" : contextPath + "/ajax/queryCondition/getTrackers.spr",
+            "getFieldsUrl" : contextPath + "/ajax/queryCondition/getFields.spr",
+            "getFieldChoicesUrl" : contextPath + "/ajax/queryCondition/getFieldChoices.spr",
+            "getUsersUrl" : contextPath + "/ajax/queryCondition/getUsers.spr",
+            "getQueryStructureUrl" : contextPath + "/ajax/queryCondition/getQueryStructure.spr",
+            "getExistingReferencesUrl" : contextPath + "/ajax/queryCondition/getExistingReferenceData.spr"
+        });
+    });
+</script>

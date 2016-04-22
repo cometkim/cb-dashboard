@@ -1,0 +1,80 @@
+<script type="text/javascript">
+    $(function () {
+        #if($empty)
+        $('#TestCasesByRunResult-${chartId}').text("Nothing to display");
+        #else
+        $('#TestCasesByRunResult-${chartId}').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            credits: {
+                enabled: false
+            },
+            title: {
+                text: "$title"
+            },
+            tooltip: {
+                pointFormat: '<b>{point.y} runs</b> ({point.percentage:.1f}%)'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    showInLegend: true,
+                    dataLabels: {
+                        format: '{point.name}:<br/>{y} runs ({percentage:.1f}%)'
+                    }
+                }
+            },
+            series: [{
+                #set($passed = $!coverages.get('passed'))
+                #set($partlyPassed = $!coverages.get('partlyPassed'))
+                #set($failed = $!coverages.get('failed'))
+                #set($blocked = $!coverages.get('blocked'))
+                #set($incomplete = $!coverages.get('incomplete'))
+                #set($notRanYet = $!coverages.get('notRanYet'))
+
+                data: [
+                #if("$!passed" != ""){
+                    name: 'Passed',
+                    color: '#00a85d',
+                    y: $passed
+                },#end
+                #if("$!partlyPassed" != ""){
+                    name: 'Partly Passed',
+                    color: '#00bf6a',
+                    y: $partlyPassed
+                },#end
+                #if("$!failed" != ""){
+                    name: 'Failed',
+                    color: '#b31317',
+                    y: $failed
+                },#end
+                #if("$!blocked" != ""){
+                    name: 'Blocked',
+                    color: '#777',
+                    y: $blocked
+                },#end
+                #if("$!incomplete" != ""){
+                    name: 'Incomplete',
+                    color: '#ffab46',
+                    y: $incomplete
+                },#end
+                #if("$!notRanYet" != ""){
+                    name: 'Not ran yet',
+                    color: '#0093b8',
+                    y: $notRanYet
+                }#end
+                ]
+            }]
+        });
+        #end
+    });
+</script>
+
+<div class="wikichartbox">
+    <div id="TestCasesByRunResult-${chartId}" style="height: 400px; width: 600px; margin: 0 auto"></div>
+</div>

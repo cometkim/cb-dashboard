@@ -1,0 +1,14 @@
+#parse("xbeamerchart/includes/widget-util.vm")
+
+<div class="XBeamerWidget">
+    #widgetLabel($this)
+    #widgetHelp($this)
+    <div class="select chartType">
+    <select id="XBeamerWidget-${param}-${chartId}">
+        <option value="area">Area Chart</option>
+        <option value="bar">Bar Chart</option>
+        <option value="line">Line Chart</option>
+        <option value="pie">Pie Chart</option>
+    </select>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+#macro(deprecated)
+#end
+
+#macro(widgetLabel $widget)
+    #if("$!widget.summary" != "")
+    <span class="label#if($widget.required) mandatory#else optional#end">$widget.summary</span>
+    #end
+#end
+
+#macro(widgetHelp $widget)
+    #if("$!widget.shortDescription" != "")
+    <span class="help ui-icon ui-icon-help" title="$widget.shortDescription"></span>
+    #end
+#end

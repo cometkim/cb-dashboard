@@ -1,0 +1,63 @@
+<div class="wikichartbox">
+    <h4>$!title</h4>
+    #if($no_issue)
+    <div class="no_issue">Nothing to display.</div>
+    #else
+    <table class="embedded">
+        <thead>
+        <tr>
+            <th></th>
+            #if("$colFieldName" == "Status")
+                #foreach($status in $statuses)
+                <th class="number">$status</th>
+                #end
+            #else
+                #foreach($column in $columns)
+                <th class="number">$column</th>
+                #end
+            #end
+        </tr>
+        </thead>
+
+        <tbody>
+            #set($oldRow = "")
+
+            #foreach($key in $countTable.keySet())
+                #set($cell = $key.split(";"))
+                #set($row = $cell[0])
+                #set($col = $cell[1])
+
+                #if($row != $oldRow)
+                    <tr>
+                        <th class="textData">$row</th>
+                    #foreach($column in $columns)
+                        #set($value = 0)
+                        #set($value = $!countTable["${row};${column}"])
+                        <td class="number">$value</td>
+                    #end
+                    </tr>
+                    #set($oldRow = $row)
+                #end
+            #end
+        </tbody>
+
+        <tfoot>
+        <tr>
+            <th class="textData">Total:</th>
+            #foreach($column in $columns)
+            <th class="number">
+                #set($total = 0)
+                #set($total = $!colTotal["$column"])
+                $total</th>
+            #end
+        </tr>
+        </tfoot>
+    </table>
+    #end
+</div>
+
+<style type="text/css">
+    tfoot th.number{
+        text-align: center !important;
+    }
+</style>

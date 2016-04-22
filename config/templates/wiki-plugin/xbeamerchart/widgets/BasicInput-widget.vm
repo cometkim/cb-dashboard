@@ -1,0 +1,9 @@
+#parse("xbeamerchart/includes/widget-util.vm")
+
+<div class="XBeamerWidget">
+    #widgetLabel($this)
+    #widgetHelp($this)
+    <div class="input $type basicInput">
+        <input type="$type" id="XBeamerWidget-${param}-${chartId}"></input>
+    </div>
+</div>

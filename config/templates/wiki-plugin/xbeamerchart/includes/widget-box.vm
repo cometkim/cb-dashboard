@@ -1,0 +1,44 @@
+<div class="XBeamer-widgetbox">
+    <div class="header">
+        <h3>$chartName</h3>
+        <span class="ui-icon ui-icon-minusthick"></span>
+    </div>
+    <div class="content">
+    #foreach($widget in $widgets.values())
+        $widget
+    #end
+        <button class="XBeamerSubmit" id="Save-${chartId}">Save</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#Save-${chartId}").button().click(function(){
+        if(typeof QueryConditionWidget_${chartId} != "undefined")
+            QueryConditionWidget_${chartId}.buildQueryString();
+
+        var params = "";
+
+        #foreach($param in $widgets.keySet())
+            #set($widget = $widgets.get($param))
+            #set($selector = "#XBeamerWidget-${param}-${chartId}")
+
+            var value = replaceAll($("$selector").val(), "'", "^");
+
+            params += " ${param}='" + value + "'";
+        #end
+
+        $.ajax({
+            url: "$initUrl",
+            type: 'POST',
+            data: {
+                page_id: $pageId,
+                chart_name: "$pluginName",
+                chart_id: "$chartId",
+                params: params
+            },
+            success: function(){
+                location.reload();
+            }
+        });
+    });
+</script>

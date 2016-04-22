@@ -1,0 +1,55 @@
+<script type="text/javascript">
+    $(function () {
+        $('#IssuesTrendForProject').highcharts({
+            chart: {
+                type: 'column',
+            },
+            credits: {
+                enabled: false
+            },
+            title: {
+                text: "$title"
+            },
+            xAxis: {
+                categories: $categories,
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'count'
+                }
+            },
+            tooltip: {
+                shared: true,
+                valueSuffix: ' items',
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                },
+                series: {
+                    pointWidth: 13
+                }
+            },
+            series: [{
+                name: 'Open',
+                data: $open,
+                color: '#b31317'
+            },{
+                name: 'In Progress',
+                data: $inprogress,
+                color: '#ffab46'
+            },{
+                name: 'Resolved/Closed',
+                data: $closed,
+                color: '#187a6c'
+            }]
+        });
+    });
+</script>
+
+<div class="wikichartbox">
+    <div id="IssuesTrendForProject" style="min-width: 600px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+</div>

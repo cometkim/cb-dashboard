@@ -1,0 +1,54 @@
+<div class="wikichartbox" id="OpenIssuesPlugin_table" style="height: 400px; overflow-y: scroll">
+    <table>
+        <thead>
+            <tr>
+                <td>Project Name</td>
+                <td>REQ</td>
+                <td>TASK</td>
+                <td>TESTRUN</td>
+                <td>BUG</td>
+                <td class="subtotal">Total</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            #foreach($project in $projects)
+            <tr>
+                <td>$project.name</td>
+
+                #set($countRequirements = $countOfOpenRequirements.get($project))
+                <td>$countRequirements</td>
+
+                #set($countTasks = $countOfOpenTasks.get($project))
+                <td>$countTasks</td>
+
+                #set($countTestRuns = $countOfOpenTestRuns.get($project))
+                <td>$countTestRuns</td>
+
+                #set($countOfBugs = $countOfOpenBugs.get($project))
+                <td>$countOfBugs</td>
+
+                #set($countOfOpenIssues = $countRequirements + $countTasks + $countTestRuns + $countOfBugs)
+                <td>$countOfOpenIssues</td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>
+
+<style>
+    #OpenIssuesPlugin_table tbody tr:hover {
+        background-color: #f5f5f5
+    }
+    #OpenIssuesPlugin_table thead tr {
+        background-color: #4CAF50;
+        color: white;
+    }
+    #OpenIssuesPlugin_table table{
+        border-collapse: collapse;
+    }
+    #OpenIssuesPlugin_table th, td {
+        text-align: left;
+        padding: 8px;
+    }
+</style>

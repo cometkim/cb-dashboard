@@ -1,0 +1,87 @@
+#pagecontent{
+  h1, h2, h3, h4, h5, h6{
+    border-bottom: none !important;
+  }
+}
+
+.XBeamer-contents {
+  position: relative;
+  width: 100%;
+  border: 1px dashed #ccc;
+
+  & > div{
+    background: #CCC;
+    height: 160px;
+    position: absolute;
+    width: 160px;
+    padding: 0;
+  }
+
+  & > div[data-ss-colspan='2'] { width: 330px; }
+  & > div[data-ss-colspan='3'] { width: 500px; }
+  & > div[data-ss-colspan='4'] { width: 670px; }
+  & > div[data-ss-colspan='5'] { width: 840px; }
+
+  & > div[data-ss-rowspan='2'] { height: 330px; }
+  & > div[data-ss-rowspan='3'] { height: 500px; }
+  & > div[data-ss-rowspan='4'] { height: 670px; }
+  & > div[data-ss-rowspan='5'] { height: 840px; }
+
+  .ss-placeholder-child {
+    background: transparent;
+    border: 1px dashed red;
+  }
+}
+
+.XBeamer-widgetbox{
+  height: inherit;
+  border: 1px solid #454545;
+  padding: 0px;
+  list-style-type: none;
+  background: #fff;
+
+  & > .header{
+    height: 25px;
+    padding : 0px 5px;
+    border-bottom: 1px solid #454545;
+    background: #454545;
+    color: #fff;
+    margin-bottom: 10px;
+
+    h3{
+      display: inline-block;
+      margin: 0;
+      border-bottom: none !important;
+      font-size: 1em;
+    }
+
+    .ui-icon {
+      float: right !important;
+      right: 0px;
+      margin: 5px;
+      filter: brightness(100);
+      -webkit-filter: brightness(100);
+      -moz-filter: brightness(100);
+      -o-filter: brightness(100);
+      -ms-filter: brightness(100);
+    }
+  }
+
+  & > .content{
+    padding: 20px;
+  }
+}
+
+.ui-icon-minusthick{
+  cursor: pointer;
+}
+
+.XBeamerWidget{
+  & > .label{
+    text-align: left;
+  }
+
+  .headerBody {
+    padding: 0;
+  }
+}
