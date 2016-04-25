@@ -95,10 +95,6 @@
         $('.XBeamer-contents').shapeshift(ss_config);
 
         $('#XBeamer-reorder').click(function(){
-            colapse = true;
-            $('#XBeamer-sidebutton').text('Add Chart');
-            $('#XBeamer-sidebar').stop().animate({right: '-${width}'}, 200, function(){});
-
             $('.XBeamerMenu').each(function(){ $(this).css('display', 'none'); });
             $('.childof-reorder').each(function(){ $(this).css('display', 'block'); });
 
