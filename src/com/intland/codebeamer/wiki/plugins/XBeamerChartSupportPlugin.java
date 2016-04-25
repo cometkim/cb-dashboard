@@ -64,6 +64,7 @@ public class XBeamerChartSupportPlugin extends AutoWiringCodeBeamerPlugin{
 
         velocityContext.put("plugins", this.getSupportedPlugins());
         velocityContext.put("createUrl", contextPath + XBeamerChartController.AJAX_CHART_CREATE_URL);
+        velocityContext.put("reorderUrl", contextPath + XBeamerChartController.AJAX_CHART_REORDER_URL);
 
         velocityContext.put("width", 230);
 

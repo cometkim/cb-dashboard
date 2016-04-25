@@ -114,7 +114,25 @@
         });
 
         $('#XBeamer-reorder-save').click(function(){
-            location.reload(true);
+            var tags = [];
+
+            $('.XBeamer-plugin').each(function(){
+                tags.push($(this).attr('id'));
+            });
+
+            var param = {
+                page_id: ${pageId},
+                tags: tags.join(',')
+            };
+
+            $.ajax({
+                url : '${reorderUrl}',
+                type: 'POST',
+                data: param,
+                success: function(result) {
+                    location.reload(true);
+                }
+            });
         });
 
         $('#XBeamer-reorder-cancel').click(function(){

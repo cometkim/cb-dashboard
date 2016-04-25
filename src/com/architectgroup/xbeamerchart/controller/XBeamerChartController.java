@@ -217,7 +217,8 @@ public class XBeamerChartController extends AbstractJsonController {
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(oldMarkup);
 
-            markup += matcher.group(1) + "\n";
+            if(matcher.find())
+                markup += matcher.group() + "\n";
         }
         markup += "}]";
 
