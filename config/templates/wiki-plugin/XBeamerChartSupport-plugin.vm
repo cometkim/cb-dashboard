@@ -48,7 +48,7 @@
 
 <div id="XBeamer-trash-container">
     <div class="XBeamer-trash">
-        Drop chart here to remove.
+        <div>Drop chart here to remove.</div>
     </div>
 </div>
 
@@ -108,7 +108,8 @@
             $('.XBeamer-trash').css('display', 'block').shapeshift({
                 autoHeight: false,
                 enableTrash: true,
-                colWidth: 1690
+                colWidth: 1690,
+                enableDrag: false
             });
         });
 
@@ -229,8 +230,8 @@
         position: absolute;
         right: 15px;
         left: 15px;
-        bottom: 10px;
-        height: 100px;
+        bottom: 20px;
+        height: 130px;
     }
 
     .XBeamer-trash {
@@ -240,5 +241,12 @@
         width: 100%;
         height: 100%;
         border: 1px dashed red;
+        vertical-align: middle;
+        background: rgba(255,0,0,0.3);
+    }
+
+    .XBeamer-trash > div{
+        font-weight: bold;
+        font-size: 24px;
     }
 </style>
