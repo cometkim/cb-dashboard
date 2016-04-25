@@ -227,7 +227,7 @@
         position: absolute;
         left: 15px;
         top: auto;
-        right: 15px;
+        right: 25px;
         bottom: 20px;
         height: 200px;
     }
