@@ -127,7 +127,7 @@ public class XBeamerQueryTilePlugin extends XBeamerChartPlugin {
         velocityContext.put("countText", countText);
         velocityContext.put("fontSize", fontSize);
 
-        velocityContext.put("queryUrl", this.getContextPath() + "/proj/query?cbQl=" + cbQl);
+        velocityContext.put("queryUrl", this.getContextPath() + "/query?cbQl=" + cbQl);
         velocityContext.put("title", title);
         velocityContext.put("suffix", suffix);
         velocityContext.put("color", color);
