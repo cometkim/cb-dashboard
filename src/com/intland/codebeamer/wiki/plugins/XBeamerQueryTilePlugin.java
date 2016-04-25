@@ -110,17 +110,17 @@ public class XBeamerQueryTilePlugin extends XBeamerChartPlugin {
         String countText;
         Integer fontSize = 58;
 
-        if(count < 1000){
+        if(count < 1000){ // 0 ~ 999
             countText = String.valueOf(count);
-        }else if(count < 10000){
-            countText = String.format("%.1fK", (float)count/1000);
+        }else if(count < 10000){ // 1000 ~ 9999
+            countText = String.format("%dK", count);
             fontSize = 52;
-        }else if(count < 100000){
+        }else if(count < 100000){ // 10K ~ 99K
             countText = String.format("%dK", count/1000);
-        }else if(count < 1000000){
+        }else if(count < 1000000){ // 100K ~ 999K
             countText = String.format("%dK", count/1000);
             fontSize = 52;
-        }else{
+        }else{ // 1M ~
             countText = String.format("%dM", count/1000000);
         }
 
