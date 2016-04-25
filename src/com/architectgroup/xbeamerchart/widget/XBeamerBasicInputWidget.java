@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
  */
 public class XBeamerBasicInputWidget extends XBeamerWidget {
     public enum Type{
-        TEXT("text"), NUMBER("number");
+        TEXT("text"), NUMBER("number"), BOOLEAN("checkbox");
 
         private String type;
 
@@ -32,6 +32,8 @@ public class XBeamerBasicInputWidget extends XBeamerWidget {
         public boolean isNumber(){
             return this == NUMBER;
         }
+
+        public boolean isBoolean() { return this == BOOLEAN; }
     }
 
     private Type type;
@@ -55,6 +57,9 @@ public class XBeamerBasicInputWidget extends XBeamerWidget {
 
         else if(this.type.isNumber())
             return (T)Integer.valueOf(argument);
+
+        else if(this.type.isBoolean())
+            return (T)Boolean.valueOf(argument);
 
         return null;
     }
