@@ -104,6 +104,7 @@
 
             ss_config.enableDrag = true;
             $('.XBeamer-contents').shapeshift(ss_config);
+            $('.XBeamer-contents').addClass('active-reorder');
 
             $('.XBeamer-trash').css('display', 'block').shapeshift({
                 autoHeight: false,
@@ -228,10 +229,15 @@
 
     #XBeamer-trash-container {
         position: absolute;
-        right: 15px;
         left: 15px;
+        top: auto;
+        right: 15px;
         bottom: 20px;
-        height: 130px;
+        height: 200px;
+    }
+
+    .XBeamer-contents.active-reorder{
+        background: rgba(0, 255, 0, 0.3);
     }
 
     .XBeamer-trash {
