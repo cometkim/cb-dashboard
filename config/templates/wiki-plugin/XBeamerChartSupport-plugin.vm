@@ -90,7 +90,7 @@
         var ss_config = {
             align: 'left',
             enableDrag: false,
-            columns: 9
+            columns: 10
         };
 
         $('.XBeamer-contents').shapeshift(ss_config);
@@ -224,9 +224,5 @@
         width: 100%;
         height: 100%;
         border: 1px dashed red;
-    }
-
-    .XBeamer-trash:hover{
-        background: rgba(255, 0, 0, 0.5);
     }
 </style>
