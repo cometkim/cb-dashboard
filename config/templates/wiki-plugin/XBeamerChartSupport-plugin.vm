@@ -92,7 +92,6 @@
             enableDrag: false,
             columns: 10
         };
-
         $('.XBeamer-contents').shapeshift(ss_config);
 
         $('#XBeamer-reorder').click(function(){
@@ -138,7 +137,6 @@
         $('#XBeamer-reorder-cancel').click(function(){
             $('.XBeamerMenu').each(function(){ $(this).css('display', 'block'); });
             $('.childof-reorder').each(function(){ $(this).css('display', 'none'); });
-            $('.XBeamer-contents').trigger('ss-destroy');
             location.reload(true);
         });
     });
