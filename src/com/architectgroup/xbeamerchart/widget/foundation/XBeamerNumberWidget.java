@@ -1,6 +1,6 @@
 package com.architectgroup.xbeamerchart.widget.foundation;
 
-import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
+import com.architectgroup.xbeamerchart.widget.base.XBeamerBasicWidget;
 import com.ecyrd.jspwiki.WikiContext;
 import org.apache.velocity.VelocityContext;
 
@@ -10,15 +10,17 @@ import javax.validation.constraints.NotNull;
 /**
  * Created by comet on 2016-04-25.
  */
-public class XBeamerNumberWidget extends XBeamerWidget {
+public class XBeamerNumberWidget extends XBeamerBasicWidget {
     private Integer min;
     private Integer max;
     private Float step;
-    private Boolean enable;
-    private Boolean readonly;
+
+    private boolean disable = false;
+    private boolean readonly = false;
 
     public XBeamerNumberWidget(WikiContext ctx) {
-        super(ctx, "xbeamerchart/widgets/text.vm");
+        super(ctx, "input");
+        this.attribute("type", "number");
     }
 
     public void allowSign(boolean allow){
@@ -37,9 +39,9 @@ public class XBeamerNumberWidget extends XBeamerWidget {
 
     public void setStep(float step){ this.step = step; }
 
-    public Boolean isEnable(){ return this.enable; }
+    public Boolean isDisable(){ return this.disable; }
 
-    public void setEnable(boolean enable){ this.enable = enable; }
+    public void setDisable(boolean disable){ this.disable = disable; }
 
     public Boolean isReadonly(){ return this.readonly; }
 
@@ -47,12 +49,13 @@ public class XBeamerNumberWidget extends XBeamerWidget {
 
     @Override
     public void populateContext(VelocityContext velocityContext) {
+        this.attribute("min", this.min);
+        this.attribute("max", this.max);
+        this.attribute("step", this.step);
 
-    }
+        if(this.disable) this.attribute("disable", "disable");
+        if(this.readonly) this.attribute("readonly", "readonly");
 
-    @Nullable
-    @Override
-    public <T> T getSubject(@NotNull String argument) {
-        return null;
+        super.populateContext(velocityContext);
     }
 }
