@@ -8,7 +8,9 @@
             <option value="$currentUser.id">Me</option>
             <optgroup label="Users">
             #foreach($user in $users)
+                #if($user.activated)
                 <option value="$user.id">$user.name ($user.email)</option>
+                #end
             #end
             </optgroup>
         </select>
