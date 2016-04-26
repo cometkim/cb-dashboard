@@ -25,6 +25,10 @@ public class XBeamerBasicWidget extends XBeamerWidget {
     public String attribute(String attr){ return this.attributes.get(attr); }
     public void attribute(String attr, String value){ this.attributes.put(attr, value); }
 
+    public void safetyAttribute(String attr, Object obj){
+        if(obj != null) this.attribute(attr, String.valueOf(obj));
+    }
+
     public String getHtmlTag(){ return this.htmlTag; }
     public void setHtmlTag(String htmlTag){ this.htmlTag = htmlTag; }
 
