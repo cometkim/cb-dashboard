@@ -21,7 +21,7 @@
             #set($widget = $widgets.get($param))
             #set($selector = "#XBeamerWidget-${param}-${chartId}")
 
-            var value = replaceAll($("$selector").val(), "'", "^");
+            var value = replaceAll(String($("$selector").val()), "'", "^");
 
             params += " ${param}='" + value + "'";
         #end
