@@ -47,5 +47,7 @@ public class XBeamerTextareaWidget extends XBeamerBasicWidget {
 
         if(this.disable) this.attribute("disable", "disable");
         if(this.readonly) this.attribute("readonly", "readonly");
+
+        super.populateContext(velocityContext);
     }
 }
