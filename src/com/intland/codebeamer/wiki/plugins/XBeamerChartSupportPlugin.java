@@ -39,6 +39,7 @@ public class XBeamerChartSupportPlugin extends AutoWiringCodeBeamerPlugin{
         List<XBeamerPlugin> plugins = new ArrayList<>();
         // TODO : Add implemented plugins here.
         plugins.add(new XBeamerQueryTilePlugin());
+        plugins.add(new XBeamerIssueStatisticsTablePlugin());
 
         return plugins;
     }
