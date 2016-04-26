@@ -37,6 +37,5 @@ public class XBeamerProjectInfoPlugin extends XBeamerWrapperPlugin{
     }
 
     @Override
-    protected Class<ProjectInfoPlugin> getOriginPlugin() {return ProjectInfoPlugin.class;
-    }
+    protected Class<ProjectInfoPlugin> getOriginPlugin() { return ProjectInfoPlugin.class; }
 }

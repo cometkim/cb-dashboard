@@ -14,7 +14,6 @@ public class XBeamerColorWidget extends XBeamerWidget {
 
     @Override
     public void populateContext(VelocityContext velocityContext) {
-
     }
 
     @Override
