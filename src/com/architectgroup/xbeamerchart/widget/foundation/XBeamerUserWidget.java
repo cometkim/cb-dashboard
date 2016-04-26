@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Nullable;
 import javax.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -35,6 +36,6 @@ public class XBeamerUserWidget extends XBeamerWidget{
     @Nullable
     @Override
     public List<UserDto> getSubject(@NotNull String argument) {
-        return null;
+        return userDao.findById(Arrays.asList(argument.split(",")));
     }
 }
