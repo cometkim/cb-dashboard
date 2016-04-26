@@ -8,6 +8,7 @@ import org.apache.velocity.VelocityContext;
 /**
  * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-03-23.
  */
+@Deprecated
 public class XBeamerColorPickerWidget extends XBeamerWidget {
     public XBeamerColorPickerWidget(WikiContext ctx) {
         super(ctx, "xbeamerchart/widgets/ColorPicker-widget.vm");

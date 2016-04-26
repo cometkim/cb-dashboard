@@ -18,6 +18,7 @@ import java.util.TreeMap;
 /**
  * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-03-21.
  */
+@Deprecated
 public class XBeamerTrackerSelectWidget extends XBeamerWidget {
     @Autowired
     private ProjectManager projectManager;

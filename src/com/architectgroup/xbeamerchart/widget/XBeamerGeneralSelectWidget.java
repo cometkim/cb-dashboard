@@ -10,6 +10,7 @@ import java.util.Map;
 /**
  * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-03-25.
  */
+@Deprecated
 public class XBeamerGeneralSelectWidget extends XBeamerWidget {
     private Map options;
     private boolean multiple;

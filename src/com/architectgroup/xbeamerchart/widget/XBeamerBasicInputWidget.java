@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 /**
  * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-04-12.
  */
+@Deprecated
 public class XBeamerBasicInputWidget extends XBeamerWidget {
     public enum Type{
         TEXT("text"), NUMBER("number"), BOOLEAN("checkbox");
