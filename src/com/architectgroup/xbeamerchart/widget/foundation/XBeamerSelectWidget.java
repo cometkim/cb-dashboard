@@ -13,7 +13,6 @@ import java.util.Map;
 public class XBeamerSelectWidget extends XBeamerWidget {
     private Map options;
     private boolean multiple;
-    private String param;
 
     public XBeamerSelectWidget(WikiContext ctx, Map options, boolean multiple) {
         super(ctx, "xbeamerchart/widgets/select.vm");
@@ -23,7 +22,7 @@ public class XBeamerSelectWidget extends XBeamerWidget {
 
     @Override
     public void populateContext(VelocityContext velocityContext) {
-        velocityContext.put("selectOptions", this.options);
+        velocityContext.put("options", this.options);
         velocityContext.put("multiple", multiple);
     }
 
