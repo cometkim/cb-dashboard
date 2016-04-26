@@ -1,14 +1,16 @@
-#parse("xbeamerchart/includes/widget-util.vm" )
+#parse("xbeamerchart/includes/widget-util.vm")
 
 <div class="XBeamerWidget" #widgetHelp($this) #widgetStyles($this)>
+    #widgetLabel($this)
+
     <div class="input boolean">
         <input id="XBeamerWidget-${param}-${chartId}" type="hidden" value="false">
-        <input class="toggle" id="toggle-${param}-${chartId}" type="checkbox"><label for="toggle-${param}-${chartId}">$this.label</label>
+        <input class="toggle" type="checkbox">
     </div>
 </div>
 
 <script type="text/javascript">
-    $('#toggle-${param}-${chartId}').change(function(){
+    $('#XBeamerWidget-${param}-${chartId} + input').change(function(){
         $('#XBeamerWidget-${param}-${chartId}').val($(this).is(':checked'));
     });
 </script>
