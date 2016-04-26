@@ -1,9 +1,0 @@
-#parse("xbeamerchart/includes/widget-util.vm")
-
-#deprecated()
-
-<div class="XBeamerWidget">
-<div class="input text InputText">
-    <input type="text" id="XBeamerWidget-${param}-${chartId}"></input>
-</div>
-</div>
