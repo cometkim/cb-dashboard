@@ -28,7 +28,7 @@ public abstract class XBeamerWidget{
     @Deprecated
     private String selector;
 
-    private String summary;
+    private String label;
     private String shortDescription;
 
     private boolean required;
@@ -74,8 +74,13 @@ public abstract class XBeamerWidget{
     @Deprecated
     public void setSelector(String selector) { this.selector = selector; }
 
-    public String getSummary() { return this.summary; }
-    public void setSummary(String summary) { this.summary = summary; }
+    @Deprecated
+    public String getSummary() { return this.label; }
+    @Deprecated
+    public void setSummary(String summary) { this.label = summary; }
+
+    public String getLabel() { return this.label; }
+    public void setLabel(String label){ this.label = label; }
 
     public String getShortDescription() { return this.shortDescription; }
     public void setShortDescription(String shortDescription) { this.shortDescription = shortDescription; }
