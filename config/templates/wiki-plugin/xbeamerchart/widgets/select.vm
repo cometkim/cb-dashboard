@@ -1,0 +1,13 @@
+#parse("xbeamerchart/includes/widget-util.vm")
+
+<div class="XBeamerWidget" #widgetHelp($this) #widgetStyles($this)>
+    #widgetLabel($this)
+
+    <div class="select">
+        <select #if($multiple)multiple#end id="XBeamerWidget-${param}-${chartId}">
+        #foreach($option in $options.keySet())
+            <option value="$option">$options.get($option)</option>
+        #end
+        </select>
+    </div>
+</div>

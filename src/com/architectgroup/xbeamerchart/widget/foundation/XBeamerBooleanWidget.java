@@ -17,12 +17,11 @@ public class XBeamerBooleanWidget extends XBeamerWidget{
 
     @Override
     public void populateContext(VelocityContext velocityContext) {
-
     }
 
     @Nullable
     @Override
-    public <T> T getSubject(@NotNull String argument) {
-        return null;
+    public Boolean getSubject(@NotNull String argument) {
+        return Boolean.parseBoolean(argument);
     }
 }

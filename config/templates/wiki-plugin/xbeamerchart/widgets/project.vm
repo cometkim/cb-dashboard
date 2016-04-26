@@ -1,0 +1,13 @@
+#parse("xbeamerchart/includes/widget-util.vm" )
+
+<div class="XBeamerWidget" #widgetHelp($this) #widgetStyles($this)>
+    #widgetLabel($this)
+
+    <div class="select project">
+        <select class="XBeamerWidget-${multiple}select with-filter" id="XBeamerWidget-${param}-${chartId}">
+        #foreach($project in $projects)
+            <option value="$project.id">$project.name</option>
+        #end
+        </select>
+    </div>
+</div>

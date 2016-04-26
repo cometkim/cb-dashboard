@@ -3,7 +3,7 @@
 <div class="XBeamerWidget" #widgetHelp($this) #widgetStyles($this)>
     #widgetLabel($this)
 
-    <div class="$htmlTag">
+    <div class="$htmlTag basic">
         <$htmlTag id="XBeamerWidget-${param}-${chartId}" #foreach($attr in $attributes.keySet()) $attr="$attributes.get($attr)"#end></$htmlTag>
     </div>
 </div>
