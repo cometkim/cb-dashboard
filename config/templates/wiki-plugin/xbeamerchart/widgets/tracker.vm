@@ -4,7 +4,7 @@
     #widgetLabel($this)
 
     <div class="select tracker">
-        <select class="XBeamerWidget-${multiple}select with-filter" id="XBeamerWidget-${param}-${chartId}">
+        <select #if($multiple)multiple#end class="with-filter" id="XBeamerWidget-${param}-${chartId}">
         #foreach($project in $trackers.keySet())
             <optgroup label="$project.name">
             #foreach($tracker in $trackers.get($project))

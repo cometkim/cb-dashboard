@@ -47,7 +47,7 @@ public class XBeamerTrackerWidget extends XBeamerWidget {
         }
 
         velocityContext.put("trackers", trackers);
-        velocityContext.put("multiple", multiple ? "multi" : "");
+        velocityContext.put("multiple", multiple);
     }
 
     @Override

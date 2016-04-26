@@ -3,11 +3,14 @@
 <div class="XBeamerWidget" #widgetHelp($this) #widgetStyles($this)>
     #widgetLabel($this)
 
-    <div class="select project">
+    <div class="select user">
         <select #if($multiple)multiple#end class="with-filter" id="XBeamerWidget-${param}-${chartId}">
-        #foreach($project in $projects)
-            <option value="$project.id">$project.name</option>
-        #end
+            <option value="$currentUser.id">Me</option>
+            <optgroup label="Users">
+            #foreach($user in $users)
+                <option value="$user.id">$user.name ($user.email)</option>
+            #end
+            </optgroup>
         </select>
     </div>
 </div>
