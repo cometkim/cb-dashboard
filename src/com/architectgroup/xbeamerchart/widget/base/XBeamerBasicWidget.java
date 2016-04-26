@@ -23,10 +23,8 @@ public class XBeamerBasicWidget extends XBeamerWidget {
 
     public Map<String, String> getAttributes(){ return this.attributes; }
     public String attribute(String attr){ return this.attributes.get(attr); }
-    public void attribute(String attr, String value){ this.attributes.put(attr, value); }
-
-    public void safetyAttribute(String attr, Object obj){
-        if(obj != null) this.attribute(attr, String.valueOf(obj));
+    public void attribute(String attr, Object value){
+        if(value != null) this.attribute(attr, String.valueOf(value));
     }
 
     public String getHtmlTag(){ return this.htmlTag; }
