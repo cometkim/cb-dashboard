@@ -7,10 +7,16 @@ import org.apache.velocity.VelocityContext;
 /**
  * Created by comet on 2016-04-26.
  */
-public class XBeamerTextareaWidget extends XBeamerWidget {
-    public XBeamerTextareaWidget(WikiContext ctx) {
-        super(ctx, "xbeamerchart/widgets/textarea.vm");
+public class XBeamerTextWidget extends XBeamerWidget {
+    private String placeholder;
+
+    public XBeamerTextWidget(WikiContext ctx) {
+        super(ctx, "xbeamerchart/widgets/text.vm");
     }
+
+    public String getPlaceholder(){ return this.placeholder; }
+
+    public void setPlaceholder(String placeholder){ this.placeholder = placeholder; }
 
     @Override
     public void populateContext(VelocityContext velocityContext) {

@@ -20,16 +20,14 @@ public class XBeamerProjectWidget extends XBeamerWidget {
     private boolean multiple;
 
     public XBeamerProjectWidget(WikiContext ctx, boolean multiple){
-        super(ctx, "xbeamerchart/widgets/Project-widget.vm");
+        super(ctx, "xbeamerchart/widgets/project.vm");
         this.multiple = multiple;
-        this.cssStyle("width", "200px");
-        this.cssStyle("height", "50px");
     }
 
     @Override
     public void populateContext(VelocityContext velocityContext) {
         velocityContext.put("projects", projectManager.findAll(this.getUser()));
-        velocityContext.put("multiple", multiple ? "multi" : "");
+        velocityContext.put("multiple", multiple);
     }
 
     @Override

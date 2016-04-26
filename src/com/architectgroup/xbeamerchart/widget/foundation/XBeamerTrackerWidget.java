@@ -31,11 +31,9 @@ public class XBeamerTrackerWidget extends XBeamerWidget {
     }
 
     public XBeamerTrackerWidget(WikiContext ctx, boolean multiple, List<TrackerTypeDto> types){
-        super(ctx, "xbeamerchart/widgets/TrackerSelect-widget.vm");
+        super(ctx, "xbeamerchart/widgets/tracker.vm");
         this.types = types;
         this.multiple = multiple;
-        this.cssStyle("width", "200px");
-        this.cssStyle("height", "50px");
     }
 
     @Override
