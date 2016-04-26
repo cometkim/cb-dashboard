@@ -208,17 +208,19 @@ public class XBeamerChartController extends AbstractJsonController {
         String oldMarkup = wikiPageControllerSupport.getWikiPageContent(request, page, page.getHeadRevision(), false);
 
         String markup = "[{XBeamerChartSupport\n\n";
-        for(String tag : tags.split(",")){
-            String chartName = tag.split("-")[0];
-            String chartId   = tag.split("-")[1];
+        if(tags != null && !tags.isEmpty()) {
+            for (String tag : tags.split(",")) {
+                String chartName = tag.split("-")[0];
+                String chartId = tag.split("-")[1];
 
-            String regex = String.format(REGEX_FORMAT, chartName, chartId);
+                String regex = String.format(REGEX_FORMAT, chartName, chartId);
 
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(oldMarkup);
+                Pattern pattern = Pattern.compile(regex);
+                Matcher matcher = pattern.matcher(oldMarkup);
 
-            if(matcher.find())
-                markup += matcher.group() + "\n";
+                if (matcher.find())
+                    markup += matcher.group() + "\n";
+            }
         }
         markup += "}]";
 
