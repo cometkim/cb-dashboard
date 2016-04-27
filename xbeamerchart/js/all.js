@@ -1,22 +1,22 @@
+function replaceAll(str, searchStr, replaceStr) {
+    return str.split(searchStr).join(replaceStr);
+}
+
+var DEFAULT_TRUNCATE_CHARS = 60;
+
+function truncateText(text, numberOfChars) {
+    numberOfChars = numberOfChars || DEFAULT_TRUNCATE_CHARS;
+    if (text.length > numberOfChars) {
+        return (text.substring(0, numberOfChars) + "...");
+    }
+    return text;
+}
+
+String.prototype.includes = String.prototype.includes || function(chars){
+    return this.indexOf(chars) != -1;
+};
+
 (function($){
-    var DEFAULT_TRUNCATE_CHARS = 60;
-
-    String.prototype.includes = String.prototype.includes || function(chars){
-        return this.indexOf(chars) != -1;
-    };
-
-    function replaceAll(str, searchStr, replaceStr) {
-        return str.split(searchStr).join(replaceStr);
-    }
-
-    function truncateText(text, numberOfChars) {
-        numberOfChars = numberOfChars || DEFAULT_TRUNCATE_CHARS;
-        if (text.length > numberOfChars) {
-            return (text.substring(0, numberOfChars) + "...");
-        }
-        return text;
-    }
-
     $(function(){
         $('.XBeamerWidget select').each(function(){
             $(this).multiselect({
