@@ -229,9 +229,10 @@ public class IssueStatisticsByOrderPlugin extends AutoWiringCodeBeamerPlugin {
             // Key of Column 2
             velocityContext.put("orderBy", orderBy);
             velocityContext.put("maxOrder", maxOrder);
+
         }catch (NullPointerException e){
             e.printStackTrace();
-            throw new PluginException(e.getMessage());
+            throw e;
         }
     }
 }
