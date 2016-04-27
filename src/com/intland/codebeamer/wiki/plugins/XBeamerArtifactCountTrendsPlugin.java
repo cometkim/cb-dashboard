@@ -1,14 +1,13 @@
 package com.intland.codebeamer.wiki.plugins;
 
 import com.architectgroup.xbeamerchart.plugin.XBeamerWrapperPlugin;
-import com.architectgroup.xbeamerchart.widget.XBeamerBasicInputWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerProjectSelectWidget;
+import com.architectgroup.xbeamerchart.widget.XBeamerProjectWidget;
+import com.architectgroup.xbeamerchart.widget.XBeamerTextWidget;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
 import com.ecyrd.jspwiki.WikiContext;
-import com.intland.codebeamer.wiki.plugins.base.AbstractCodeBeamerWikiPlugin;
 
 /**
- * Created by Administrator on 2016-04-18.
+ * Created by Taeil on 2016-04-18.
  */
 public class XBeamerArtifactCountTrendsPlugin extends XBeamerWrapperPlugin {
     @Override
@@ -23,20 +22,20 @@ public class XBeamerArtifactCountTrendsPlugin extends XBeamerWrapperPlugin {
 
     @Override
     public String getImgUrl() {
-        return null;
+        return "";
     }
 
-    private XBeamerWidget projectIdWidget;
-    private XBeamerWidget titleWidget;
+    private XBeamerWidget projectIdWidget, titleWidget;
 
     @Override
     protected void initParameterWidgets() {
         WikiContext context=this.getWikiContext();
 
-        projectIdWidget = new XBeamerProjectSelectWidget(context, true);
+        projectIdWidget = new XBeamerProjectWidget(context, true);
+        projectIdWidget.setRequired(true);
         this.addWidgetForParameter("projectId", projectIdWidget);
 
-        titleWidget = new XBeamerBasicInputWidget(context, XBeamerBasicInputWidget.Type.TEXT);
+        titleWidget = new XBeamerTextWidget(context);
         this.addWidgetForParameter("title", titleWidget);
     }
 

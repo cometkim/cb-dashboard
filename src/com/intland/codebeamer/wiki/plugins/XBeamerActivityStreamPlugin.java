@@ -3,6 +3,8 @@ package com.intland.codebeamer.wiki.plugins;
 import com.architectgroup.xbeamerchart.plugin.XBeamerWrapperPlugin;
 import com.architectgroup.xbeamerchart.widget.XBeamerBasicInputWidget;
 import com.architectgroup.xbeamerchart.widget.XBeamerProjectSelectWidget;
+import com.architectgroup.xbeamerchart.widget.XBeamerProjectWidget;
+import com.architectgroup.xbeamerchart.widget.XBeamerTextWidget;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
 import com.ecyrd.jspwiki.WikiContext;
 import com.intland.codebeamer.wiki.plugins.recentactivities.ActivityStreamPlugin;
@@ -26,25 +28,27 @@ public class XBeamerActivityStreamPlugin extends XBeamerWrapperPlugin {
         return "/cb/images/xbeamerchart/activities.png";
     }
 
-    private XBeamerWidget projectIdWidget;
-    private XBeamerWidget titleWidget;
-    private XBeamerWidget maxWidget;
+    public XBeamerActivityStreamPlugin(){
+        this.setShapeColspan(5);
+        this.setShapeRowspan(3);
+    }
+
+    private XBeamerWidget projectIdWidget, titleWidget, maxWidget;
 
     @Override
     protected void initParameterWidgets() {
         WikiContext context = this.getWikiContext();
 
-        projectIdWidget = new XBeamerProjectSelectWidget(context, true);
-        projectIdWidget.setRequired(true);
-        projectIdWidget.setSummary("");
+        projectIdWidget = new XBeamerProjectWidget(context, true);
+        projectIdWidget.setLabel("select projects or all projects");
         projectIdWidget.setShortDescription("");
         this.addWidgetForParameter("projectId", projectIdWidget);
 
-        titleWidget = new XBeamerBasicInputWidget(context, XBeamerBasicInputWidget.Type.TEXT);
+        titleWidget = new XBeamerTextWidget(context);
         titleWidget.setDefaultArgument("Activity Stream");
         this.addWidgetForParameter("title", titleWidget);
 
-        maxWidget = new XBeamerBasicInputWidget(context, XBeamerBasicInputWidget.Type.NUMBER);
+        maxWidget = new XBeamerTextWidget(context);
         maxWidget.setDefaultArgument("10");
         this.addWidgetForParameter("max", maxWidget);
     }
