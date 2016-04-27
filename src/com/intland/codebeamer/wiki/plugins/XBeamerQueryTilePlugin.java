@@ -61,7 +61,8 @@ public class XBeamerQueryTilePlugin extends XBeamerChartPlugin {
         colorWidget = new XBeamerColorWidget(context);
         colorWidget.setLabel("Color");
         colorWidget.setShortDescription("Select the background color");
-        colorWidget.setDefaultArgument("#0093b8");
+        colorWidget.setRequired(true);
+        //colorWidget.setDefaultArgument("#0093b8");
         this.addWidgetForParameter("color", colorWidget);
 
         titleWidget = new XBeamerTextWidget(context);
