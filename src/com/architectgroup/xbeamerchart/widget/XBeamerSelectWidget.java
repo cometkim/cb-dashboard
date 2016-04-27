@@ -18,6 +18,8 @@ public class XBeamerSelectWidget extends XBeamerWidget {
         super(ctx, "xbeamerchart/widgets/select.vm");
         this.options = options;
         this.multiple = multiple;
+
+        this.cssStyle("width", "100%");
     }
 
     @Override

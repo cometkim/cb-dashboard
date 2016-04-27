@@ -24,6 +24,8 @@ public class XBeamerReleaseWidget extends XBeamerWidget{
 
     public XBeamerReleaseWidget(WikiContext ctx) {
         super(ctx, "xbeamerchart/widgets/release.vm");
+
+        this.cssStyle("width", "100%");
     }
 
     @Override

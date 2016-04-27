@@ -22,6 +22,8 @@ public class XBeamerProjectWidget extends XBeamerWidget {
     public XBeamerProjectWidget(WikiContext ctx, boolean multiple){
         super(ctx, "xbeamerchart/widgets/project.vm");
         this.multiple = multiple;
+
+        this.cssStyle("width", "100%");
     }
 
     @Override

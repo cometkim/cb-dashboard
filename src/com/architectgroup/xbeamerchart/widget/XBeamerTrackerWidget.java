@@ -34,6 +34,8 @@ public class XBeamerTrackerWidget extends XBeamerWidget {
         super(ctx, "xbeamerchart/widgets/tracker.vm");
         this.types = types;
         this.multiple = multiple;
+
+        this.cssStyle("width", "100%");
     }
 
     @Override

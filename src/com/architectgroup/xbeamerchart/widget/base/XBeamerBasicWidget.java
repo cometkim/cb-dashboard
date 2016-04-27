@@ -19,6 +19,9 @@ public class XBeamerBasicWidget extends XBeamerWidget {
         super(ctx, "xbeamerchart/includes/widget-basic.vm");
         this.htmlTag = htmlTag;
         this.attributes = new HashMap<>();
+
+        this.cssStyle("width", "200px");
+        this.cssStyle("height", "50px");
     }
 
     public Map<String, String> getAttributes(){ return this.attributes; }

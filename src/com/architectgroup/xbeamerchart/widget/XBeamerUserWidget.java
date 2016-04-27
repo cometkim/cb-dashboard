@@ -24,6 +24,8 @@ public class XBeamerUserWidget extends XBeamerWidget{
     public XBeamerUserWidget(WikiContext ctx, boolean multiple) {
         super(ctx, "xbeamerchart/widgets/user.vm");
         this.multiple = multiple;
+
+        this.cssStyle("width", "100%");
     }
 
     @Override

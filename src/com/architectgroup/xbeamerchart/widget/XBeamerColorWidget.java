@@ -10,6 +10,9 @@ import org.apache.velocity.VelocityContext;
 public class XBeamerColorWidget extends XBeamerWidget {
     public XBeamerColorWidget(WikiContext ctx) {
         super(ctx, "xbeamerchart/widgets/color.vm");
+
+        this.cssStyle("width", "200px");
+        this.cssStyle("height", "50px");
     }
 
     @Override
