@@ -1,9 +1,7 @@
 package com.intland.codebeamer.wiki.plugins;
 
 import com.architectgroup.xbeamerchart.plugin.XBeamerChartPlugin;
-import com.architectgroup.xbeamerchart.widget.XBeamerBasicInputWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerColorPickerWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerQueryConditionWidget;
+import com.architectgroup.xbeamerchart.widget.*;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
 import com.ecyrd.jspwiki.WikiContext;
 import com.ecyrd.jspwiki.plugin.PluginException;
@@ -22,13 +20,6 @@ import java.util.Map;
  * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-03-25.
  */
 public class XBeamerQueryTilePlugin extends XBeamerChartPlugin {
-    @Autowired
-    @Qualifier("TRACKER_ITEM")
-    private CbQLQueryHandler<TrackerItemDto> cbQLQueryHandler;
-
-    @Autowired
-    private TrackerItemDao trackerItemDao;
-
     @Override
     public String getChartName() {
         return "Query Tile";
@@ -53,10 +44,7 @@ public class XBeamerQueryTilePlugin extends XBeamerChartPlugin {
         this.setFrame(false);
     }
 
-    private XBeamerWidget cbQLWidget;
-    private XBeamerWidget colorWidget;
-    private XBeamerWidget titleWidget;
-    private XBeamerWidget suffixWidget;
+    private XBeamerWidget cbQLWidget, colorWidget, titleWidget, suffixWidget;
 
     @Override
     protected void initParameterWidgets() {
@@ -70,19 +58,19 @@ public class XBeamerQueryTilePlugin extends XBeamerChartPlugin {
         cbQLWidget.setDefaultArgument("project.id != 0");
         this.addWidgetForParameter("cbQL", cbQLWidget);
 
-        colorWidget = new XBeamerColorPickerWidget(context);
-        colorWidget.setSummary("Color");
+        colorWidget = new XBeamerColorWidget(context);
+        colorWidget.setLabel("Color");
         colorWidget.setShortDescription("Select the background color");
         colorWidget.setDefaultArgument("#0093b8");
         this.addWidgetForParameter("color", colorWidget);
 
-        titleWidget = new XBeamerBasicInputWidget(context, XBeamerBasicInputWidget.Type.TEXT);
+        titleWidget = new XBeamerTextWidget(context);
         titleWidget.setRequired(true);
-        titleWidget.setSummary("Title");
+        titleWidget.setLabel("Title");
         this.addWidgetForParameter("title", titleWidget);
 
-        suffixWidget = new XBeamerBasicInputWidget(context, XBeamerBasicInputWidget.Type.TEXT);
-        suffixWidget.setSummary("Suffix");
+        suffixWidget = new XBeamerTextWidget(context);
+        suffixWidget.setLabel("Suffix");
         this.addWidgetForParameter("suffix", suffixWidget);
     }
 
