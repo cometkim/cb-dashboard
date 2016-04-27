@@ -1,4 +1,4 @@
-<div class="XBeamer-plugin" id="${pluginName}-${chartId}" data-ss-colspan='$colspan' data-ss-rowspan='$rowspan'>
+<div class="XBeamer-plugin" id="${pluginName}-${chartId}" data-ss-colspan='$colspan' data-ss-rowspan='$rowspan'><div>
 #if($initialized)
     #if($useFrame)
         <div class="XBeamer-widgetbox">
@@ -15,4 +15,4 @@
 #else
     #parse("xbeamerchart/includes/widget-box.vm")
 #end
-</div>
+</div></div>
