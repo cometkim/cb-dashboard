@@ -24,6 +24,7 @@ public class XBeamerProjectWidget extends XBeamerWidget {
         this.multiple = multiple;
 
         this.cssStyle("width", "100%");
+        this.cssStyle("height", "50px");
     }
 
     @Override

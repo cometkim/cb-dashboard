@@ -256,7 +256,7 @@
         margin: 0;
     }
     
-    .XBeamer-plugin > div{
+    .XBeamer-plugin > .XBeamer-plugin-content{
         height: inherit;
         overflow-y: auto;
         background: white;
