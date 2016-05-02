@@ -10,12 +10,6 @@ import com.ecyrd.jspwiki.WikiContext;
  * Created by comet on 2016-04-26.
  */
 public class XBeamerIssueStatisticsTablePlugin extends XBeamerWrapperPlugin {
-    public XBeamerIssueStatisticsTablePlugin(){
-        this.setShapeColspan(5);
-        this.setShapeRowspan(3);
-        this.setFrame(true);
-    }
-
     @Override
     public String getChartName() {
         return "Issues Statistics Table";
@@ -23,12 +17,15 @@ public class XBeamerIssueStatisticsTablePlugin extends XBeamerWrapperPlugin {
 
     @Override
     public String getChartDescription() {
-        return "";
+        return "Displays the number of issues by two specified field name";
     }
 
     @Override
-    public String getImgUrl() {
-        return "";
+    public String getImgUrl() { return "/cb/xbeamerchart/images/landscape.jpg"; }
+
+    public XBeamerIssueStatisticsTablePlugin(){
+        this.setShapeColspan(5);
+        this.setShapeRowspan(3);
     }
 
     private XBeamerWidget trackerIdWidget, colWidget, rowWidget, titleWidget;
@@ -39,17 +36,22 @@ public class XBeamerIssueStatisticsTablePlugin extends XBeamerWrapperPlugin {
 
         trackerIdWidget = new XBeamerTrackerWidget(ctx, false);
         trackerIdWidget.setRequired(true);
-        trackerIdWidget.setSummary("Select a tracker");
+        trackerIdWidget.setLabel("Select a tracker");
+        this.addWidgetForParameter("trackerId", trackerIdWidget);
+
+        titleWidget = new XBeamerTextWidget(ctx);
+        titleWidget.setLabel("Title");
+        this.addWidgetForParameter("title", titleWidget);
 
         colWidget = new XBeamerTextWidget(ctx);
         colWidget.setRequired(true);
-        colWidget.setSummary("Field name 1 (Column)");
+        colWidget.setLabel("Field name 1 (Column)");
+        this.addWidgetForParameter("col", colWidget);
 
         rowWidget = new XBeamerTextWidget(ctx);
         rowWidget.setRequired(true);
-        rowWidget.setSummary("Field name 2 (Row)");
-
-        titleWidget = new XBeamerTextWidget(ctx);
+        rowWidget.setLabel("Field name 2 (Row)");
+        this.addWidgetForParameter("row", rowWidget);
     }
 
     @Override

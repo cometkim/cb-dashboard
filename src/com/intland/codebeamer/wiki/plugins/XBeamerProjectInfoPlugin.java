@@ -1,30 +1,24 @@
 package com.intland.codebeamer.wiki.plugins;
 
 import com.architectgroup.xbeamerchart.plugin.XBeamerWrapperPlugin;
-import com.architectgroup.xbeamerchart.widget.XBeamerBasicInputWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerProjectSelectWidget;
+import com.architectgroup.xbeamerchart.widget.XBeamerProjectWidget;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
 import com.ecyrd.jspwiki.WikiContext;
-
-import com.intland.codebeamer.wiki.plugins.ProjectInfoPlugin;
-import com.intland.codebeamer.wiki.plugins.recentactivities.ActivityStreamPlugin;
 
 public class XBeamerProjectInfoPlugin extends XBeamerWrapperPlugin{
 
     @Override
     public String getChartName() {
-        return null;
+        return "Project Info";
     }
 
     @Override
     public String getChartDescription() {
-        return null;
+        return "Displays basic information about a specified project";
     }
 
     @Override
-    public String getImgUrl() {
-        return null;
-    }
+    public String getImgUrl() { return "/cb/xbeamerchart/images/landscape.jpg"; }
 
     private XBeamerWidget projectIdWidget;
 
@@ -32,7 +26,9 @@ public class XBeamerProjectInfoPlugin extends XBeamerWrapperPlugin{
     protected void initParameterWidgets() {
         WikiContext context = this.getWikiContext();
 
-        projectIdWidget = new XBeamerProjectSelectWidget(context, false);
+        projectIdWidget = new XBeamerProjectWidget(context, false);
+        projectIdWidget.setRequired(true);
+        projectIdWidget.setLabel("Select a Project");
         this.addWidgetForParameter("projectId", projectIdWidget);
     }
 

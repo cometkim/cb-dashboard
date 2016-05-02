@@ -27,12 +27,12 @@ public class XBeamerQueryTilePlugin extends XBeamerChartPlugin {
 
     @Override
     public String getChartDescription() {
-        return "Display a big number that is result of the query.";
+        return "Display a number of result for query.";
     }
 
     @Override
     public String getImgUrl() {
-        return "/cb/images/xbeamerchart/querytile.png";
+        return "/cb/xbeamerchart/images/querytile.jpg";
     }
 
     @Override
@@ -48,8 +48,8 @@ public class XBeamerQueryTilePlugin extends XBeamerChartPlugin {
 
     @Override
     protected void initParameterWidgets() {
-        this.setShapeColspan(3);
-        this.setShapeRowspan(2);
+        this.setShapeColspan(5);
+        this.setShapeRowspan(3);
 
         WikiContext context = this.getWikiContext();
 
@@ -80,7 +80,7 @@ public class XBeamerQueryTilePlugin extends XBeamerChartPlugin {
         this.setShapeColspan(1);
         this.setShapeRowspan(1);
 
-        String cbQl = cbQLWidget.getValue();
+        String cbQl = cbQLWidget.getValue().replace("^", "'");
 
         List<TrackerItemDto> items;
         try {

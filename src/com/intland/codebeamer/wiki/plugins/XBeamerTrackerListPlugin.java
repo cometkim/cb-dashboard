@@ -95,7 +95,7 @@ public class XBeamerTrackerListPlugin extends XBeamerWrapperPlugin {
     }
 
     @Override
-    protected Class<XBeamerTrackerListPlugin> getOriginPlugin() {
-        return XBeamerTrackerListPlugin.class;
+    protected Class<TrackerListPlugin> getOriginPlugin() {
+        return TrackerListPlugin.class;
     }
 }

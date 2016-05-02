@@ -6,7 +6,7 @@ import com.architectgroup.xbeamerchart.widget.XBeamerProjectSelectWidget;
 import com.architectgroup.xbeamerchart.widget.XBeamerTrackerSelectWidget;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
 import com.ecyrd.jspwiki.WikiContext;
-import com.intland.codebeamer.wiki.plugins.base.AbstractCodeBeamerWikiPlugin;
+import com.intland.codebeamer.wiki.plugins.mycurrentissues.MyCurrentIssuesPlugin;
 
 /**
  * Created by Administrator on 2016-04-18.
@@ -27,9 +27,7 @@ public class XBeamerMyCurrentIssuesPlugin extends XBeamerWrapperPlugin {
         return null;
     }
 
-    private XBeamerWidget projectIdWidget;
-    private XBeamerWidget trackerIdWidget;
-    private XBeamerWidget titleWidget;
+    private XBeamerWidget projectIdWidget, trackerIdWidget, titleWidget;
 
     @Override
     protected void initParameterWidgets() {
@@ -47,8 +45,7 @@ public class XBeamerMyCurrentIssuesPlugin extends XBeamerWrapperPlugin {
     }
 
     @Override
-    protected Class<XBeamerMyCurrentIssuesPlugin> getOriginPlugin() {
-        return XBeamerMyCurrentIssuesPlugin.class
-                ;
+    protected Class<MyCurrentIssuesPlugin> getOriginPlugin() {
+        return MyCurrentIssuesPlugin.class;
     }
 }

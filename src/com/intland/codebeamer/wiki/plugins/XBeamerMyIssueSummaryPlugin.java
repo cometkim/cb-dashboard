@@ -54,7 +54,7 @@ public class XBeamerMyIssueSummaryPlugin extends XBeamerWrapperPlugin {
     }
 
     @Override
-    protected Class<XBeamerMyIssueSummaryPlugin> getOriginPlugin() {
-        return XBeamerMyIssueSummaryPlugin.class;
+    protected Class<MyIssueSummaryPlugin> getOriginPlugin() {
+        return MyIssueSummaryPlugin.class;
     }
 }

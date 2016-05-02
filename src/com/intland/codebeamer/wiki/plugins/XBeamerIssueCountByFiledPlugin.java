@@ -21,12 +21,12 @@ public class XBeamerIssueCountByFiledPlugin extends XBeamerWrapperPlugin {
 
     @Override
     public String getChartDescription() {
-        return "";
+        return "Displays the issue distribution in the project by field";
     }
 
     @Override
     public String getImgUrl() {
-        return "";
+        return "/cb/xbeamerchart/images/barchart.jpg";
     }
 
     public XBeamerIssueCountByFiledPlugin(){

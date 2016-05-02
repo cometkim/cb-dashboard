@@ -30,7 +30,6 @@ public class XBeamerReleaseWidget extends XBeamerWidget{
 
     @Override
     public void populateContext(VelocityContext velocityContext) {
-
     }
 
     @Nullable

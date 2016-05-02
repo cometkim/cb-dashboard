@@ -5,6 +5,7 @@ import com.architectgroup.xbeamerchart.widget.*;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
 import com.ecyrd.jspwiki.WikiContext;
 import com.intland.codebeamer.wiki.plugins.base.AbstractCodeBeamerWikiPlugin;
+import com.intland.codebeamer.wiki.plugins.issuecounttrends.IssueCountTrendsPlugin;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -15,22 +16,20 @@ import java.util.Map;
 public class XBeamerIssueCountTrendsPlugin extends XBeamerWrapperPlugin {
     @Override
     public String getChartName() {
-        return "Issue Count Trends";
+        return "Open vs Closed Trends";
     }
 
     @Override
     public String getChartDescription() {
-        return "";
+        return "Displays the number of issues created vs the number of issues resolved for a period of a time";
     }
 
     @Override
     public String getImgUrl() {
-        return "";
+        return "/cb/xbeamerchart/images/created-vs-closed.jpg";
     }
 
     public XBeamerIssueCountTrendsPlugin(){
-        this.setShapeColspan(5);
-        this.setShapeRowspan(3);
     }
 
     private XBeamerWidget trackerIdWidget, titleWidget, displayWidget;
@@ -42,7 +41,7 @@ public class XBeamerIssueCountTrendsPlugin extends XBeamerWrapperPlugin {
         trackerIdWidget = new XBeamerTrackerWidget(context, true);
         trackerIdWidget.setRequired(true);
         trackerIdWidget.setLabel("Select Trackers");
-        this.addWidgetForParameter("trackerId",trackerIdWidget);
+        this.addWidgetForParameter("trackerId", trackerIdWidget);
 
         Map<String, String> options = new LinkedHashMap<>();
         options.put("chart", "Chart");
@@ -60,7 +59,7 @@ public class XBeamerIssueCountTrendsPlugin extends XBeamerWrapperPlugin {
     }
 
     @Override
-    protected Class<XBeamerIssueCountTrendsPlugin> getOriginPlugin() {
-        return XBeamerIssueCountTrendsPlugin.class;
+    protected Class<IssueCountTrendsPlugin> getOriginPlugin() {
+        return IssueCountTrendsPlugin.class;
     }
 }

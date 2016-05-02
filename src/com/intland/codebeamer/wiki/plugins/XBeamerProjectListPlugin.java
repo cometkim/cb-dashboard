@@ -1,55 +1,53 @@
 package com.intland.codebeamer.wiki.plugins;
 
 import com.architectgroup.xbeamerchart.plugin.XBeamerWrapperPlugin;
-import com.architectgroup.xbeamerchart.widget.XBeamerBasicInputWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerGeneralSelectWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerProjectSelectWidget;
+import com.architectgroup.xbeamerchart.widget.*;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
 import com.ecyrd.jspwiki.WikiContext;
-import com.intland.codebeamer.wiki.plugins.ProjectListPlugin;
-import com.intland.codebeamer.wiki.plugins.base.AbstractCodeBeamerWikiPlugin;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class XBeamerProjectListPlugin extends XBeamerWrapperPlugin {
     @Override
     public String getChartName() {
-        return null;
+        return "Project List";
     }
 
     @Override
     public String getChartDescription() {
-        return null;
+        return "Displays the complete list of projects accessible by the current user";
     }
 
     @Override
     public String getImgUrl() {
-        return null;
+        return "/cb/xbeamerchart/images/landscape.jpg";
     }
 
-    private XBeamerWidget projectIdWidget;
-    private XBeamerWidget namewWidget;
-    private XBeamerWidget formatWidget;
+    private XBeamerWidget namewWidget, formatWidget, categoryWidget;
 
     @Override
     protected void initParameterWidgets() {
         WikiContext context = this.getWikiContext();
 
-        Map<String,String> formats=new LinkedHashMap<>();
-        formats.put("name","visible only column");
-        formats.put("brief","'name','member' and 'created'");
-        formats.put("full","most details");
+        Map<String,String> formats = new LinkedHashMap<>();
+        formats.put("name","Visible Only Column");
+        formats.put("brief","'Name','Member' and 'Created'");
+        formats.put("full","Most Details");
 
+        formatWidget = new XBeamerSelectWidget(context, formats, false);
+        formatWidget.setRequired(true);
+        formatWidget.setLabel("Select a display format");
+        this.addWidgetForParameter("format", formatWidget);
 
-        projectIdWidget=new XBeamerProjectSelectWidget(context,true);
-        projectIdWidget.setRequired(true);
-        this.addWidgetForParameter("id",projectIdWidget);
-
-        namewWidget=new XBeamerBasicInputWidget(context, XBeamerBasicInputWidget.Type.TEXT);
-        this.addWidgetForParameter("name",namewWidget);
-
-        formatWidget=new XBeamerGeneralSelectWidget(context,formats,false);
-        this.addWidgetForParameter("format",formatWidget);
+//        namewWidget = new XBeamerTextWidget(context);
+//        namewWidget.setDefaultArgument(".*");
+//        namewWidget.setLabel("Name Regex (default: .*)");
+//        this.addWidgetForParameter("name", namewWidget);
+//
+//        categoryWidget = new XBeamerTextWidget(context);
+//        categoryWidget.setDefaultArgument(".*");
+//        categoryWidget.setLabel("Category Regex (default: .*)");
+//        this.addWidgetForParameter("category", categoryWidget);
     }
 
     @Override

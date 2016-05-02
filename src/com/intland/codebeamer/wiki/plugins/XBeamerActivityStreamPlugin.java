@@ -1,8 +1,6 @@
 package com.intland.codebeamer.wiki.plugins;
 
 import com.architectgroup.xbeamerchart.plugin.XBeamerWrapperPlugin;
-import com.architectgroup.xbeamerchart.widget.XBeamerBasicInputWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerProjectSelectWidget;
 import com.architectgroup.xbeamerchart.widget.XBeamerProjectWidget;
 import com.architectgroup.xbeamerchart.widget.XBeamerTextWidget;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
@@ -20,12 +18,12 @@ public class XBeamerActivityStreamPlugin extends XBeamerWrapperPlugin {
 
     @Override
     public String getChartDescription() {
-        return "Show all activities";
+        return "Shows all activities";
     }
 
     @Override
     public String getImgUrl() {
-        return "/cb/images/xbeamerchart/activities.png";
+        return "/cb/xbeamerchart/images/activities.jpg";
     }
 
     public XBeamerActivityStreamPlugin(){

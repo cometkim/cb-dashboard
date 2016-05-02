@@ -1,10 +1,8 @@
 package com.intland.codebeamer.wiki.plugins;
 
 import com.architectgroup.xbeamerchart.plugin.XBeamerWrapperPlugin;
-import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerBasicInputWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerProjectSelectWidget;
 import com.ecyrd.jspwiki.WikiContext;
+import com.intland.codebeamer.wiki.plugins.recentactivities.MostActiveProjectsPlugin;
 
 /**
  * Created by Administrator on 2016-04-18.
@@ -12,38 +10,26 @@ import com.ecyrd.jspwiki.WikiContext;
 public class XBeamerMostActiveProjectPlugin extends XBeamerWrapperPlugin {
     @Override
     public String getChartName() {
-        return null;
+        return "Most Active Projects";
     }
 
     @Override
     public String getChartDescription() {
-        return null;
+        return "Shows the top most active projects";
     }
 
     @Override
     public String getImgUrl() {
-        return null;
+        return "/cb/xbeamerchart/images/landscape.jpg";
     }
-
-
-    private XBeamerWidget projectIdWidget;
-    private XBeamerWidget maxWidget;
 
     @Override
     protected void initParameterWidgets() {
-        WikiContext context=this.getWikiContext();
-
-        projectIdWidget = new XBeamerProjectSelectWidget(context, true);
-        this.addWidgetForParameter("projectId", projectIdWidget);
-
-        maxWidget = new XBeamerBasicInputWidget(context, XBeamerBasicInputWidget.Type.NUMBER);
-        maxWidget.setDefaultArgument("10");
-        this.addWidgetForParameter("max", maxWidget);
-
+        WikiContext context = this.getWikiContext();
     }
 
     @Override
-    protected Class<XBeamerMostActiveProjectPlugin> getOriginPlugin() {
-        return XBeamerMostActiveProjectPlugin.class;
+    protected Class<MostActiveProjectsPlugin> getOriginPlugin() {
+        return MostActiveProjectsPlugin.class;
     }
 }

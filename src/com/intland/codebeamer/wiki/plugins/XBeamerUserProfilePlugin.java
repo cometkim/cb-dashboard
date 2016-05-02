@@ -42,7 +42,7 @@ public class XBeamerUserProfilePlugin extends XBeamerWrapperPlugin {
     }
 
     @Override
-    protected Class<XBeamerUserProfilePlugin> getOriginPlugin() {
-        return XBeamerUserProfilePlugin.class;
+    protected Class<UserProfilePlugin> getOriginPlugin() {
+        return UserProfilePlugin.class;
     }
 }

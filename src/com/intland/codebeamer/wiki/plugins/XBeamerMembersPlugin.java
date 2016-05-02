@@ -1,28 +1,24 @@
 package com.intland.codebeamer.wiki.plugins;
 
 import com.architectgroup.xbeamerchart.plugin.XBeamerWrapperPlugin;
-import com.architectgroup.xbeamerchart.widget.XBeamerBasicInputWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerProjectSelectWidget;
+import com.architectgroup.xbeamerchart.widget.XBeamerProjectWidget;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
 import com.ecyrd.jspwiki.WikiContext;
-
-import com.intland.codebeamer.wiki.plugins.MembersPlugin;
-import com.intland.codebeamer.wiki.plugins.base.AbstractCodeBeamerWikiPlugin;
 
 public class XBeamerMembersPlugin extends XBeamerWrapperPlugin {
     @Override
     public String getChartName() {
-        return null;
+        return "Members";
     }
 
     @Override
     public String getChartDescription() {
-        return null;
+        return "Display the members and administrators of the specified project";
     }
 
     @Override
     public String getImgUrl() {
-        return null;
+        return "/cb/xbeamerchart/images/members.jpg";
     }
 
     private XBeamerWidget projectIdWidget;
@@ -31,12 +27,14 @@ public class XBeamerMembersPlugin extends XBeamerWrapperPlugin {
     protected void initParameterWidgets() {
         WikiContext context = this.getWikiContext();
 
-        projectIdWidget = new XBeamerProjectSelectWidget(context, false);
+        projectIdWidget = new XBeamerProjectWidget(context, false);
+        projectIdWidget.setRequired(true);
+        projectIdWidget.setLabel("Select a Project");
         this.addWidgetForParameter("projectId", projectIdWidget);
     }
 
     @Override
-    protected Class<XBeamerMembersPlugin> getOriginPlugin() {
-        return XBeamerMembersPlugin.class;
+    protected Class<MembersPlugin> getOriginPlugin() {
+        return MembersPlugin.class;
     }
 }
