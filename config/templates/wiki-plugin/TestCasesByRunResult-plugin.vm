@@ -1,8 +1,5 @@
 <script type="text/javascript">
     $(function () {
-        #if($empty)
-        $('#TestCasesByRunResult-${chartId}').text("Nothing to display");
-        #else
         $('#TestCasesByRunResult-${chartId}').highcharts({
             chart: {
                 plotBackgroundColor: null,
@@ -15,6 +12,9 @@
             },
             title: {
                 text: "$title"
+            },
+            lang: {
+                noData: 'No data to display'
             },
             tooltip: {
                 pointFormat: '<b>{point.y} runs</b> ({point.percentage:.1f}%)'
@@ -71,7 +71,6 @@
                 ]
             }]
         });
-        #end
     });
 </script>
 

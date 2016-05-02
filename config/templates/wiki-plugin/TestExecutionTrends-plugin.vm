@@ -10,6 +10,9 @@
             title: {
                 text: "$title"
             },
+            lang: {
+                noData: 'No data to display'
+            },
             xAxis: {
                 type: 'datetime'
             },
