@@ -104,22 +104,26 @@ public class TestCasesByRunResultPlugin extends AutoWiringCodeBeamerPlugin{
                 throw new PluginException("The tracker is not TestRun");
 
             Map<String, Integer> coverages = this.getCoverages();
-            boolean isEmpty = coverages.isEmpty();
+
+            boolean isEmpty = true;
+            for(Integer value : coverages.values()){
+                isEmpty = isEmpty && value.equals(0);
+            }
 
             if(!isEmpty){
                 velocityContext.put("chartId", RandomStringUtils.randomAlphanumeric(10));
                 velocityContext.put("coverages", this.getCoverages());
 
-                String title;
-
-                if(params.containsKey("title"))
-                    title = (String)params.get("title");
-                else
-                    title = "Test Run Results for " + tracker.getProject().getName() + " → " + tracker.getName();
-
-                velocityContext.put("title", title);
             }
 
+            String title;
+
+            if(params.containsKey("title"))
+                title = (String)params.get("title");
+            else
+                title = "Test Run Results for " + tracker.getProject().getName() + " → " + tracker.getName();
+
+            velocityContext.put("title", title);
             velocityContext.put("empty", isEmpty);
 
         }else{
