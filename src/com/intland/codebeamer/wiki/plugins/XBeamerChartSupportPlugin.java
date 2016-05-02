@@ -27,8 +27,10 @@ public class XBeamerChartSupportPlugin extends AutoWiringCodeBeamerPlugin{
     @Autowired
     private WikiMarkupProcessor wikiMarkupProcessor;
 
-    public static final String getVersion(){ return "DEBUG"; }
-    public static final String getTargetVersion() { return "7.9.0"; }
+    public static final String VERSION = "1.0.0";
+    public static final String VERSION_STAT = "beta";
+
+    public static final String TARGET_CB_VERSION = "7.9.1";
 
     public static final String getCBVersion(){
         LicenseCode licenseCode = LicenseCodeImpl.getInstance();
@@ -38,8 +40,22 @@ public class XBeamerChartSupportPlugin extends AutoWiringCodeBeamerPlugin{
     public static final List<XBeamerPlugin> getSupportedPlugins(){
         List<XBeamerPlugin> plugins = new ArrayList<>();
         // TODO : Add implemented plugins here.
-        plugins.add(new XBeamerQueryTilePlugin());
+        plugins.add(new XBeamerActivityStreamPlugin());
+        plugins.add(new XBeamerIssueCountByFiledPlugin());
+        plugins.add(new XBeamerIssueCountTrendsPlugin());
+        plugins.add(new XBeamerIssueStatisticPlugin());
+        plugins.add(new XBeamerIssueStatisticsByOrderPlugin());
         plugins.add(new XBeamerIssueStatisticsTablePlugin());
+        plugins.add(new XBeamerMembersPlugin());
+        plugins.add(new XBeamerMostActiveProjectPlugin());
+        plugins.add(new XBeamerProjectActivityTrendsPlugin());
+        plugins.add(new XBeamerProjectInfoPlugin());
+        plugins.add(new XBeamerProjectListPlugin());
+        plugins.add(new XBeamerQueryTilePlugin());
+        plugins.add(new XBeamerResourcingExtractionPlugin());
+        plugins.add(new XBeamerTestCasesByRunResultPlugin());
+        plugins.add(new XBeamerTestExecutionTrendsPlugin());
+        plugins.add(new XBeamerWorkItemStatisticsTablePlugin());
 
         return plugins;
     }
@@ -67,7 +83,7 @@ public class XBeamerChartSupportPlugin extends AutoWiringCodeBeamerPlugin{
         velocityContext.put("createUrl", contextPath + XBeamerChartController.AJAX_CHART_CREATE_URL);
         velocityContext.put("reorderUrl", contextPath + XBeamerChartController.AJAX_CHART_REORDER_URL);
 
-        velocityContext.put("width", 230);
+        velocityContext.put("width", 420);
 
         List<String> pluginContents = new ArrayList<>();
         String body = StringUtils.trimToEmpty((String) params.get("_body"));
