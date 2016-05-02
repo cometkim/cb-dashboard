@@ -1,7 +1,7 @@
 #set($regacy = "${contextPath}${versionedPath}")
-#set($xbeamerchart = "${contextPath}${versionedPath}/xbeamerchart/")
+#set($xbeamerchart = "${contextPath}${versionedPath}xbeamerchart/")
 
-<script type="text/javascript" src="${xbeamerchart}js/jquery.shapeshift.min.js"></script>
+<script type="text/javascript" src="${xbeamerchart}js/jquery.shapeshift.js"></script>
 
 <script type="text/javascript" src="${regacy}js/multiAccordion.js"></script>
 <script type="text/javascript" src="${regacy}js/multiselectautocomplete/ajaxReferenceFieldAutoComplete.js"></script>
@@ -12,9 +12,12 @@
 <script type="text/javascript" src="${xbeamerchart}js/queryConditionWidget.js"></script>
 
 <link rel="stylesheet" href="${regacy}stylesheet/colorPicker.less" type="text/css" media="all" />
+<link rel="stylesheet" href="${regacy}stylesheet/colorPicker.css" type="text/css" media="all" />
 <script type="text/javascript" src="${regacy}js/colorPicker.js"></script>
 
 <link rel="stylesheet" href="${xbeamerchart}stylesheet/queryTilePlugin.less" type="text/css" media="all" />
+
+<script type="text/javascript" src="${xbeamerchart}js/no-data-to-display.js"></script>
 
 ## Siedbar
 <aside id="XBeamer-sidebar" style="right:-${width}px;">
@@ -133,8 +136,6 @@
         });
 
         $('#XBeamer-reorder-cancel').click(function(){
-            $('.XBeamerMenu').each(function(){ $(this).css('display', 'block'); });
-            $('.childof-reorder').each(function(){ $(this).css('display', 'none'); });
             location.reload(true);
         });
     });
@@ -193,19 +194,26 @@
     }
 
     .XBeamer-chart-container{
+        float: left;
         margin: 5px;
     }
 
     .XBeamer-chart-container button{
+        font-family: 'arial';
         width: 190px;
         height: 150px;
         padding: 0px;
-        background-color: Window;
+        background-color: white;
         border: none;
         box-shadow: 1px 1px 5px gray;
         cursor: pointer;
         overflow-x: hidden;
         overflow-y: auto;
+    }
+
+    .XBeamer-chart-name{
+        font-weight: bold;
+        font-size: 1.1em;
     }
 
     .XBeamer-chart-preview img{
@@ -216,7 +224,7 @@
         text-align: center;
         display: none;
         margin: 10px 5px;
-        background-color: Window;
+        background-color: white;
     }
 
     .actionBar > a{
@@ -230,7 +238,7 @@
         top: auto;
         right: 25px;
         bottom: 20px;
-        height: 200px;
+        height: 190px;
     }
 
     .XBeamer-contents.active-reorder{
