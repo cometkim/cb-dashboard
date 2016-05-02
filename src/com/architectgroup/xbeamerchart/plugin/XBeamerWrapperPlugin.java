@@ -22,6 +22,9 @@ public abstract class XBeamerWrapperPlugin extends XBeamerPlugin{
 
     public XBeamerWrapperPlugin(){
         this.setFrame(false);
+
+        this.setShapeColspan(5);
+        this.setShapeRowspan(3);
     }
 
     @Override

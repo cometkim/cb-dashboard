@@ -13,6 +13,8 @@ import javax.validation.constraints.NotNull;
 public class XBeamerBooleanWidget extends XBeamerWidget{
     public XBeamerBooleanWidget(WikiContext ctx) {
         super(ctx, "xbeamerchart/widgets/boolean.vm");
+
+        this.cssStyle("width", "200px");
     }
 
     @Override
