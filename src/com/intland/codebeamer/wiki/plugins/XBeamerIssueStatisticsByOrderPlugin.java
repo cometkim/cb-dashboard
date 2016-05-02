@@ -1,11 +1,10 @@
 package com.intland.codebeamer.wiki.plugins;
 
-import com.architectgroup.xbeamerchart.plugin.XBeamerWrapperPlugin;
-import com.architectgroup.xbeamerchart.widget.XBeamerTextWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerTrackerWidget;
+import com.architectgroup.xbeamerchart.plugin.base.XBeamerWrapperPlugin;
+import com.architectgroup.xbeamerchart.widget.foundation.XBeamerTextWidget;
+import com.architectgroup.xbeamerchart.widget.foundation.XBeamerTrackerWidget;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
 import com.ecyrd.jspwiki.WikiContext;
-import com.intland.codebeamer.wiki.plugins.base.AbstractCodeBeamerWikiPlugin;
 
 /**
  * Created by comet on 2016-04-28.

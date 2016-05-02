@@ -1,4 +1,4 @@
-package com.architectgroup.xbeamerchart.plugin;
+package com.architectgroup.xbeamerchart.plugin.base;
 
 import com.architectgroup.xbeamerchart.plugin.base.XBeamerPlugin;
 import com.ecyrd.jspwiki.plugin.PluginException;
@@ -11,14 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-04-12.
  */
 public abstract class XBeamerWrapperPlugin extends XBeamerPlugin{
-    @Override
-    public abstract String getChartName();
-
-    @Override
-    public abstract String getChartDescription();
-
-    @Override
-    public abstract String getImgUrl();
+    @Autowired
+    private WikiMarkupProcessor wikiMarkupProcessor;
 
     public XBeamerWrapperPlugin(){
         this.setFrame(false);
@@ -28,14 +22,11 @@ public abstract class XBeamerWrapperPlugin extends XBeamerPlugin{
     }
 
     @Override
-    protected abstract void initParameterWidgets();
-
-    @Override
     protected final String execute() throws PluginException {
         String markup = "[{" + this.getOriginPlugin().getSimpleName();
         for(String param : this.widgets.keySet()) {
             String paramValue = this.widgets.get(param).getValue();
-            if(paramValue != null)
+            if(paramValue != null || paramValue.isEmpty())
                 markup += " " + param + "='" + paramValue + "'";
         }
         markup += "}]";
@@ -43,9 +34,6 @@ public abstract class XBeamerWrapperPlugin extends XBeamerPlugin{
     }
 
     protected abstract Class<? extends AbstractCodeBeamerWikiPlugin> getOriginPlugin();
-
-    @Autowired
-    private WikiMarkupProcessor wikiMarkupProcessor;
 
     /**
      * @param markup

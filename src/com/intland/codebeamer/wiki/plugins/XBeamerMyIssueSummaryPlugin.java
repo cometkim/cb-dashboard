@@ -1,14 +1,9 @@
 package com.intland.codebeamer.wiki.plugins;
 
-import com.architectgroup.xbeamerchart.plugin.XBeamerWrapperPlugin;
-import com.architectgroup.xbeamerchart.widget.XBeamerBasicInputWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerGeneralSelectWidget;
+import com.architectgroup.xbeamerchart.plugin.base.XBeamerWrapperPlugin;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
 import com.ecyrd.jspwiki.WikiContext;
-import com.intland.codebeamer.wiki.plugins.base.AbstractCodeBeamerWikiPlugin;
-import org.apache.ecs.storage.Hash;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 /**
@@ -45,11 +40,6 @@ public class XBeamerMyIssueSummaryPlugin extends XBeamerWrapperPlugin {
         shows.put("Unresolved","Unresolved");
         shows.put("Unsuccessful","Unsuccessful");
 
-        showWidget=new XBeamerGeneralSelectWidget(context,shows,false);
-        this.addWidgetForParameter("show",showWidget);
-
-        titleWidget = new XBeamerBasicInputWidget(context, XBeamerBasicInputWidget.Type.TEXT);
-        this.addWidgetForParameter("title", titleWidget);
 
     }
 

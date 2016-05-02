@@ -1,10 +1,11 @@
 package com.intland.codebeamer.wiki.plugins;
 
-import com.architectgroup.xbeamerchart.plugin.XBeamerWrapperPlugin;
-import com.architectgroup.xbeamerchart.widget.*;
+import com.architectgroup.xbeamerchart.plugin.base.XBeamerWrapperPlugin;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
+import com.architectgroup.xbeamerchart.widget.foundation.XBeamerProjectWidget;
+import com.architectgroup.xbeamerchart.widget.foundation.XBeamerSelectWidget;
+import com.architectgroup.xbeamerchart.widget.foundation.XBeamerTextWidget;
 import com.ecyrd.jspwiki.WikiContext;
-import com.intland.codebeamer.wiki.plugins.base.AbstractCodeBeamerWikiPlugin;
 import com.intland.codebeamer.wiki.plugins.recentactivities.ProjectActivityTrendsPlugin;
 
 import java.util.LinkedHashMap;

@@ -1,4 +1,4 @@
-package com.architectgroup.xbeamerchart.plugin;
+package com.architectgroup.xbeamerchart.plugin.base;
 
 import com.architectgroup.xbeamerchart.plugin.base.XBeamerPlugin;
 import com.ecyrd.jspwiki.plugin.PluginException;
@@ -10,23 +10,9 @@ import java.util.Map;
  * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-04-12.
  */
 public abstract class XBeamerChartPlugin extends XBeamerPlugin {
-    @Override
-    public abstract String getChartName();
-
-    @Override
-    public abstract String getChartDescription();
-
-    @Override
-    public abstract String getImgUrl();
-
-    @Override
-    protected abstract void initParameterWidgets();
-
     /**
      * If the plugin has been initialized, use this template instead widgets
      * @return      Path of template file(.vm), must placed under config/templates/wiki-plugin on host
-     *
-     * @see         XBeamerPlugin#getWidgetboxTemplateFilename()
      */
     protected abstract String getTemplateFilename();
 

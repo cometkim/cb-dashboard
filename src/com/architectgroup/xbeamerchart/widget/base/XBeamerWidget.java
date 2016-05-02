@@ -18,15 +18,12 @@ import java.util.Map;
 /**
  * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-03-21.
  */
-public abstract class XBeamerWidget{
+public abstract class XBeamerWidget<T extends Object>{
     private boolean autowire = true;
     private WikiContext wikiContext;
 
     private UserDto user;
     private String fileName;
-
-    @Deprecated
-    private String selector;
 
     private String label;
     private String shortDescription;
@@ -34,17 +31,9 @@ public abstract class XBeamerWidget{
     private boolean required;
 
     private String argument;
-    private String defaultArgument;
+    private String defaultValue;
 
     private Map<String, String> styleMap;
-
-    @Deprecated
-    public XBeamerWidget(UserDto user, String fileName) {
-        this.user = user;
-        this.fileName = fileName;
-        this.required = false;
-        this.selector = null;
-    }
 
     /**
      * @param ctx           WikiContext from plugin
@@ -56,55 +45,50 @@ public abstract class XBeamerWidget{
 
         this.user = ((CodeBeamerWikiContext)ctx).getUser();
         this.fileName = fileName;
-        this.selector = null;
 
         this.styleMap = new HashMap<>();
     }
 
-    public WikiContext getWikiContext(){ return this.wikiContext; }
+    /**
+     * Populate context that needs for widget
+     * @param velocityContext context for only this
+     */
+    public abstract void populateContext(VelocityContext velocityContext);
 
-    public UserDto getUser() { return this.user; }
-    public void setUser(UserDto user) { this.user = user; }
+    public final WikiContext getWikiContext(){ return this.wikiContext; }
 
-    public String getFileName() { return this.fileName; }
-    public void setFileName(String fileName) { this.fileName = fileName; }
+    public final UserDto getUser() { return this.user; }
+    public final void setUser(UserDto user) { this.user = user; }
 
-    @Deprecated
-    public String getSelector() { return this.selector; }
-    @Deprecated
-    public void setSelector(String selector) { this.selector = selector; }
+    public final String getFileName() { return this.fileName; }
+    public final void setFileName(String fileName) { this.fileName = fileName; }
 
-    @Deprecated
-    public String getSummary() { return this.label; }
-    @Deprecated
-    public void setSummary(String summary) { this.label = summary; }
+    public final String getLabel() { return this.label; }
+    public final void setLabel(String label){ this.label = label; }
 
-    public String getLabel() { return this.label; }
-    public void setLabel(String label){ this.label = label; }
+    public final String getShortDescription() { return this.shortDescription; }
+    public final void setShortDescription(String shortDescription) { this.shortDescription = shortDescription; }
 
-    public String getShortDescription() { return this.shortDescription; }
-    public void setShortDescription(String shortDescription) { this.shortDescription = shortDescription; }
+    public final void setDefaultValue(String defaultArgument) { this.defaultValue = defaultArgument; }
+    public final String getDefaultValue() { return this.defaultValue; }
 
-    public void setDefaultArgument(String defaultArgument) { this.defaultArgument = defaultArgument; }
-    public String getDefaultArgument() { return this.defaultArgument; }
+    public final String getValue() { return this.argument != null ? this.argument : this.defaultValue; }
+    public final void setValue(String value) { this.argument = value; }
 
-    public String getValue() { return this.argument != null ? this.argument : this.defaultArgument; }
-    public void setValue(String value) { this.argument = value; }
+    public final boolean isRequired() { return this.required; }
+    public final void setRequired(boolean required) { this.required = required; }
 
-    public boolean isRequired() { return this.required; }
-    public void setRequired(boolean required) { this.required = required; }
+    public final String cssStyle(@NotNull String style){ return this.styleMap.get(style); }
+    public final void cssStyle(@NotNull String style, @NotNull String value){ this.styleMap.put(style, value); }
 
-    public String cssStyle(String style){ return this.styleMap.get(style); }
-    public void cssStyle(String style, String value){ this.styleMap.put(style, value); }
+    public final Map<String, String> getCssStyles() { return this.styleMap; }
 
-    public Map<String, String> getCssStyles() { return this.styleMap; }
-
-    public ApplicationContext getApplicationContext() {
+    public final ApplicationContext getApplicationContext() {
         return WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
     }
 
-    public ServletContext getServletContext() {
-        WikiContext context = this.getWikiContext();
+    public final ServletContext getServletContext() {
+        WikiContext context = this.wikiContext;
 
         ServletContext servletContext;
         if(context.getHttpRequest() != null) {
@@ -116,33 +100,26 @@ public abstract class XBeamerWidget{
         return servletContext;
     }
 
-    public boolean isAutowire() {
+    public final boolean isAutowire() {
         return this.autowire;
     }
 
     /**
-     * Populate context that needs for widget
-     * @param velocityContext context for only this
-     */
-    public abstract void populateContext(VelocityContext velocityContext);
-
-    /**
      * The widget can resolve its target subject from argument
-     * @param argument      The plugin's argument entered by end-user (it can be null or empty)
-     * @param <T>           Type of target subject.
-     * @return              Target subject.
+     * @param value      The plugin's argument entered by end-user (it can be null or empty)
+     * @return              Target object
      */
-    public abstract @Nullable <T extends Object> T getSubject(@NotNull String argument);
+    public abstract @Nullable T getObject(@NotNull String value);
 
-    public @Nullable <T extends Object> T getSubject(){
+    public final @Nullable T getObject(){
         String arg = this.getValue();
-        return arg != null ? (T)this.getSubject(arg) : null;
+        return arg != null ? this.getObject(arg) : null;
     }
 
     /**
      * Support @Autowire annotations
      */
-    private void autowire(){
+    private final void autowire(){
         if(this.autowire) {
             ApplicationContext context = this.getApplicationContext();
             ControllerUtils.autoWire(this, context);

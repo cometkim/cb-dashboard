@@ -1,4 +1,4 @@
-package com.architectgroup.xbeamerchart.widget;
+package com.architectgroup.xbeamerchart.widget.foundation;
 
 import com.architectgroup.xbeamerchart.widget.base.XBeamerBasicWidget;
 import com.ecyrd.jspwiki.WikiContext;
@@ -7,19 +7,15 @@ import org.apache.velocity.VelocityContext;
 /**
  * Created by comet on 2016-04-26.
  */
-public class XBeamerTextareaWidget extends XBeamerBasicWidget {
-    private int cols;
-    private int rows;
-
+public class XBeamerTextWidget extends XBeamerBasicWidget {
     private String placeholder;
 
     private boolean disable = false;
     private boolean readonly = false;
 
-    public XBeamerTextareaWidget(WikiContext ctx, int cols, int rows){
-        super(ctx, "textarea");
-        this.cols = cols;
-        this.rows = rows;
+    public XBeamerTextWidget(WikiContext ctx) {
+        super(ctx, "input");
+        this.attribute("type", "text");
     }
 
     public String getPlaceholder(){ return this.placeholder; }
@@ -34,20 +30,18 @@ public class XBeamerTextareaWidget extends XBeamerBasicWidget {
 
     public void setReadonly(boolean readonly){ this.readonly = readonly; }
 
-    public int getCols(){ return this.cols; }
-
-    public int getRows(){ return this.rows; }
-
     @Override
     public void populateContext(VelocityContext velocityContext) {
-        this.attribute("cols", this.cols);
-        this.attribute("rows", this.rows);
-
         this.attribute("placeholder", this.placeholder);
 
         if(this.disable) this.attribute("disable", "disable");
         if(this.readonly) this.attribute("readonly", "readonly");
 
         super.populateContext(velocityContext);
+    }
+
+    @Override
+    public String getSubject(String paramValue) {
+        return paramValue;
     }
 }

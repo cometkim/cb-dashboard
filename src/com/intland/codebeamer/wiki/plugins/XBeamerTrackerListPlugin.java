@@ -1,15 +1,8 @@
 package com.intland.codebeamer.wiki.plugins;
 
-import com.architectgroup.xbeamerchart.plugin.XBeamerWrapperPlugin;
-import com.architectgroup.xbeamerchart.widget.XBeamerBasicInputWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerGeneralSelectWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerProjectSelectWidget;
+import com.architectgroup.xbeamerchart.plugin.base.XBeamerWrapperPlugin;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
 import com.ecyrd.jspwiki.WikiContext;
-
-import com.intland.codebeamer.wiki.plugins.TrackerListPlugin;
-
-import com.intland.codebeamer.wiki.plugins.base.AbstractCodeBeamerWikiPlugin;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -76,21 +69,6 @@ public class XBeamerTrackerListPlugin extends XBeamerWrapperPlugin {
         Map<String,String> layout=new LinkedHashMap<>();
         layout.put("true","True");
         layout.put("false","False");
-
-        itemWidget=new XBeamerGeneralSelectWidget(context,items,false);
-        this.addWidgetForParameter("items",itemWidget);
-
-        sortingWidget=new XBeamerGeneralSelectWidget(context,options,false);
-        this.addWidgetForParameter("options",sortingWidget);
-
-        typeWidget=new XBeamerGeneralSelectWidget(context,types,true);
-        this.addWidgetForParameter("types",typeWidget);
-
-        typesExcludedWidget=new XBeamerGeneralSelectWidget(context,types,true);
-        this.addWidgetForParameter("types",typesExcludedWidget);
-
-        typesExcludedWidget=new XBeamerGeneralSelectWidget(context,layout,false);
-        this.addWidgetForParameter("layout",layoutWidget);
 
     }
 

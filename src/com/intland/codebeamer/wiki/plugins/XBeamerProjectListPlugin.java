@@ -1,8 +1,8 @@
 package com.intland.codebeamer.wiki.plugins;
 
-import com.architectgroup.xbeamerchart.plugin.XBeamerWrapperPlugin;
-import com.architectgroup.xbeamerchart.widget.*;
+import com.architectgroup.xbeamerchart.plugin.base.XBeamerWrapperPlugin;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
+import com.architectgroup.xbeamerchart.widget.foundation.XBeamerSelectWidget;
 import com.ecyrd.jspwiki.WikiContext;
 import java.util.LinkedHashMap;
 import java.util.Map;

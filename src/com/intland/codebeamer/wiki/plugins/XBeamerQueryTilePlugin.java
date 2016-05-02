@@ -1,16 +1,14 @@
 package com.intland.codebeamer.wiki.plugins;
 
-import com.architectgroup.xbeamerchart.plugin.XBeamerChartPlugin;
-import com.architectgroup.xbeamerchart.widget.*;
+import com.architectgroup.xbeamerchart.plugin.base.XBeamerChartPlugin;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
+import com.architectgroup.xbeamerchart.widget.foundation.XBeamerColorWidget;
+import com.architectgroup.xbeamerchart.widget.foundation.XBeamerQueryConditionWidget;
+import com.architectgroup.xbeamerchart.widget.foundation.XBeamerTextWidget;
 import com.ecyrd.jspwiki.WikiContext;
 import com.ecyrd.jspwiki.plugin.PluginException;
-import com.intland.codebeamer.persistence.dao.TrackerItemDao;
 import com.intland.codebeamer.persistence.dto.TrackerItemDto;
-import com.intland.codebeamer.search.query.antlr.CbQLQueryHandler;
 import org.apache.velocity.VelocityContext;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.Collections;
 import java.util.List;

@@ -1,9 +1,6 @@
 package com.intland.codebeamer.wiki.plugins;
 
-import com.architectgroup.xbeamerchart.plugin.XBeamerWrapperPlugin;
-import com.architectgroup.xbeamerchart.widget.XBeamerBasicInputWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerProjectSelectWidget;
-import com.architectgroup.xbeamerchart.widget.XBeamerTrackerSelectWidget;
+import com.architectgroup.xbeamerchart.plugin.base.XBeamerWrapperPlugin;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
 import com.ecyrd.jspwiki.WikiContext;
 import com.intland.codebeamer.wiki.plugins.mycurrentissues.MyCurrentIssuesPlugin;
@@ -32,15 +29,6 @@ public class XBeamerMyCurrentIssuesPlugin extends XBeamerWrapperPlugin {
     @Override
     protected void initParameterWidgets() {
         WikiContext context=this.getWikiContext();
-
-        titleWidget = new XBeamerBasicInputWidget(context, XBeamerBasicInputWidget.Type.TEXT);
-        this.addWidgetForParameter("title", titleWidget);
-
-        projectIdWidget = new XBeamerProjectSelectWidget(context, true);
-        this.addWidgetForParameter("projectId", projectIdWidget);
-
-        trackerIdWidget=new XBeamerTrackerSelectWidget(context,true);
-        this.addWidgetForParameter("trackerId",trackerIdWidget);
 
     }
 

@@ -1,7 +1,6 @@
 package com.intland.codebeamer.wiki.plugins;
 
-import com.architectgroup.xbeamerchart.plugin.XBeamerWrapperPlugin;
-import com.intland.codebeamer.wiki.plugins.base.AbstractCodeBeamerWikiPlugin;
+import com.architectgroup.xbeamerchart.plugin.base.XBeamerWrapperPlugin;
 
 /**
  * Created by comet on 2016-04-26.

@@ -1,8 +1,8 @@
 package com.intland.codebeamer.wiki.plugins;
 
-import com.architectgroup.xbeamerchart.plugin.XBeamerChartPlugin;
-import com.architectgroup.xbeamerchart.widget.*;
+import com.architectgroup.xbeamerchart.plugin.base.XBeamerChartPlugin;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;
+import com.architectgroup.xbeamerchart.widget.foundation.*;
 import com.ecyrd.jspwiki.WikiContext;
 import com.ecyrd.jspwiki.plugin.PluginException;
 import org.apache.velocity.VelocityContext;

@@ -1,4 +1,4 @@
-package com.architectgroup.xbeamerchart.widget;
+package com.architectgroup.xbeamerchart.widget.foundation;
 
 import com.ecyrd.jspwiki.WikiContext;
 import com.architectgroup.xbeamerchart.widget.base.XBeamerWidget;

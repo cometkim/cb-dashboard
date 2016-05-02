@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by comet on 2016-04-26.
+ * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-04-26.
  */
-public class XBeamerBasicWidget extends XBeamerWidget {
+public class XBeamerBasicWidget extends XBeamerWidget<String> {
     private String htmlTag;
     private Map<String, String> attributes;
 
@@ -25,13 +25,20 @@ public class XBeamerBasicWidget extends XBeamerWidget {
     }
 
     public Map<String, String> getAttributes(){ return this.attributes; }
-    public String attribute(String attr){ return this.attributes.get(attr); }
-    public void attribute(String attr, Object value){
-        if(value != null) this.attributes.put(attr, String.valueOf(value));
+
+    public String attribute(@NotNull String attr){ return this.attributes.get(attr); }
+    public void attribute(@NotNull String attr, @NotNull Object value){
+        this.attributes.put(attr, String.valueOf(value));
     }
 
     public String getHtmlTag(){ return this.htmlTag; }
-    public void setHtmlTag(String htmlTag){ this.htmlTag = htmlTag; }
+
+    /**
+     * @param htmlTag
+     *
+     * @see .../template_path/xbeamerchart/includes/widget-basic.vm
+     */
+    public void setHtmlTag(@NotNull String htmlTag){ this.htmlTag = htmlTag; }
 
     @Override
     public void populateContext(VelocityContext velocityContext) {
@@ -39,7 +46,6 @@ public class XBeamerBasicWidget extends XBeamerWidget {
         velocityContext.put("attributes", this.attributes);
     }
 
-    @Nullable
     @Override
-    public String getSubject(@NotNull String argument) { return argument; }
+    public @Nullable String getObject(@NotNull String value) { return value; }
 }

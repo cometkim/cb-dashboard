@@ -1,6 +1,6 @@
 package com.intland.codebeamer.wiki.plugins;
 
-import com.architectgroup.xbeamerchart.plugin.XBeamerWrapperPlugin;
+import com.architectgroup.xbeamerchart.plugin.base.XBeamerWrapperPlugin;
 import com.ecyrd.jspwiki.WikiContext;
 import com.intland.codebeamer.wiki.plugins.recentactivities.MostActiveProjectsPlugin;
 
