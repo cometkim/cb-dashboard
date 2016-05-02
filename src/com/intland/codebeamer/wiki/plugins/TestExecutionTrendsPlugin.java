@@ -119,7 +119,8 @@ public class TestExecutionTrendsPlugin extends AutoWiringCodeBeamerPlugin {
         Set<String> formatted = new HashSet<>();
         for(Date date : trends.keySet()){
             Integer count = trends.get(date);
-            formatted.add("[" + date.getTime() + "," + count +"]");
+            calendar.setTime(date);
+            formatted.add("[Date.UTC(" + calendar.get(Calendar.YEAR) + "," + calendar.get(Calendar.MONTH) + "," + calendar.get(Calendar.DAY_OF_MONTH) + ")," + count +"]");
         }
 
         return formatted;
