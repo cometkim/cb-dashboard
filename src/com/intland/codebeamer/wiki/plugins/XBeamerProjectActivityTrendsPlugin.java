@@ -12,7 +12,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2016-04-18.
+ * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-04-18.
  */
 public class XBeamerProjectActivityTrendsPlugin extends XBeamerWrapperPlugin {
     @Override

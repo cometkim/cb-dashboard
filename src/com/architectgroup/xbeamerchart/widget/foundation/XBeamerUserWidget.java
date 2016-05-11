@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by comet on 2016-04-26.
+ * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-04-26.
  */
 public class XBeamerUserWidget extends XBeamerWidget{
     @Autowired

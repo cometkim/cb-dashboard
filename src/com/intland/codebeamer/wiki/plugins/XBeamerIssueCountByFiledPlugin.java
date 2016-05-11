@@ -11,7 +11,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Created by comet on 2016-04-27.
+ * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-04-27.
  */
 public class XBeamerIssueCountByFiledPlugin extends XBeamerWrapperPlugin {
     @Override

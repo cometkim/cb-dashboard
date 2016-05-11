@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * Created by comet on 2016-04-26.
+ * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-04-26.
  */
 public class XBeamerReleaseWidget extends XBeamerWidget<List<TrackerItemDto>>{
     @Autowired

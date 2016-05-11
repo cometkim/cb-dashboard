@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Created by comet on 2016-04-07.
+ * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-04-07.
  */
 public class IssueStatisticsByOrderPlugin extends AutoWiringCodeBeamerPlugin {
     @Autowired
