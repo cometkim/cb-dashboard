@@ -43,11 +43,11 @@ public class XBeamerActivityStreamPlugin extends XBeamerWrapperPlugin {
         this.addWidgetForParameter("projectId", projectIdWidget);
 
         titleWidget = new XBeamerTextWidget(context);
-        titleWidget.setDefaultArgument("Activity Stream");
+        titleWidget.setDefaultValue("Activity Stream");
         this.addWidgetForParameter("title", titleWidget);
 
         maxWidget = new XBeamerTextWidget(context);
-        maxWidget.setDefaultArgument("10");
+        maxWidget.setDefaultValue("10");
         this.addWidgetForParameter("max", maxWidget);
     }
 

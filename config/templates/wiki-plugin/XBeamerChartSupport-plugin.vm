@@ -1,74 +1,110 @@
 #set($regacy = "${contextPath}${versionedPath}")
 #set($xbeamerchart = "${contextPath}${versionedPath}xbeamerchart/")
 
-<script type="text/javascript" src="${xbeamerchart}js/jquery.shapeshift.js"></script>
-
+##########################################################################################################################
+## External Resources (Regacy)
+##########################################################################################################################
 <script type="text/javascript" src="${regacy}js/multiAccordion.js"></script>
 <script type="text/javascript" src="${regacy}js/multiselectautocomplete/ajaxReferenceFieldAutoComplete.js"></script>
 
 <link rel="stylesheet" href="${regacy}queries/queries.less" type="text/css" media="all" />
-<link rel="stylesheet" href="${regacy}queries/queryConditionWidget.less" type="text/css" media="all" />
 <script type="text/javascript" src="${regacy}queries/queries.js"></script>
-<script type="text/javascript" src="${xbeamerchart}js/queryConditionWidget.js"></script>
 
-<link rel="stylesheet" href="${regacy}stylesheet/colorPicker.less" type="text/css" media="all" />
-<link rel="stylesheet" href="${regacy}stylesheet/colorPicker.css" type="text/css" media="all" />
+<link rel="stylesheet" href="${regacy}queries/queryConditionWidget.less" type="text/css" media="all" />
+
+<link rel="stylesheet" href="${regacy}stylesheet/colorPicker.less" type="text/css" media="all" /> ## 7.9.0 or older
+<link rel="stylesheet" href="${regacy}stylesheet/colorPicker.css" type="text/css" media="all" /> ## 7.9.1 or newer
 <script type="text/javascript" src="${regacy}js/colorPicker.js"></script>
 
-<link rel="stylesheet" href="${xbeamerchart}stylesheet/queryTilePlugin.less" type="text/css" media="all" />
+##########################################################################################################################
+## External Resources
+##########################################################################################################################
+## jQuery.ShapeShift
+<script type="text/javascript" src="${xbeamerchart}js/jquery.shapeshift.js"></script>
 
+## HighCharts
 <script type="text/javascript" src="${xbeamerchart}js/no-data-to-display.js"></script>
 
-## Siedbar
-<aside id="XBeamer-sidebar" style="right:-${width}px;">
-    #foreach($plugin in $plugins)
-    <div class="XBeamer-chart-container" id="XBeamer-plugin-$plugin.pluginName">
-        <button>
-            <div class="XBeamer-chart-preview">
-                <img src="$plugin.imgUrl">
-                <div class="XBeamer-chart-name" value="$plugin.pluginName">$plugin.chartName</div>
-            </div>
-            <div class="XBeamer-chart-description" style="display:none">
-                $plugin.chartDescription
-            </div>
-        </button>
-    </div>
+##########################################################################################################################
+## Internal Resources
+##########################################################################################################################
+<link rel="stylesheet" href="${xbeamerchart}stylesheet/XBeamerChartSupport.less" type="text/css" media="all" />
+
+<link rel="stylesheet" href="${xbeamerchart}stylesheet/all.less" type="text/css" media="all" />
+<script type="text/javascript" src="${xbeamerchart}js/all.js"></script>
+
+<link rel="stylesheet" href="${xbeamerchart}stylesheet/widget.less" type="text/css" media="all" />
+
+<link rel="stylesheet" href="${xbeamerchart}stylesheet/plugin.less" type="text/css" media="all" />
+
+##########################################################################################################################
+## Contents
+##########################################################################################################################
+<div id="XBeamer-contents-wrapper">
+    <div class="XBeamer-contents">
+    #foreach($pluginContent in $pluginContents)
+        $pluginContent
     #end
-</aside>
-
-<a href="#" class="actionLink XBeamerMenu" id="XBeamer-sidebutton">Add Chart</a>
-<a href="#" class="actionLink XBeamerMenu" id="XBeamer-reorder">Reorder</a>
-
-<a href="#" class="actionLink childof-reorder" id="XBeamer-reorder-save">Save</a>
-<a href="#" class="actionLink childof-reorder" id="XBeamer-reorder-cancel">Cancel</a>
-
-## Wikipage Contents
-<div class="XBeamer-contents">
-#foreach($pluginContent in $pluginContents)
-    $pluginContent
-#end
+    </div>
 </div>
 
-<div id="XBeamer-trash-container">
+<script type="text/javascript">
+    var ss_contents_config = {
+        align: 'left',
+        enableDrag: false,
+        columns: 10
+    };
+
+    $(function(){
+        $('.XBeamer-contents').shapeshift(ss_contents_config);
+    });
+</script>
+
+##########################################################################################################################
+## Trash
+##########################################################################################################################
+<div id="XBeamer-trash-wrapper" style="display: none">
     <div class="XBeamer-trash">
         <div>Drop chart here to remove.</div>
     </div>
 </div>
 
 <script type="text/javascript">
-    $(function(){
-        codebeamer.Queries.init();
+    var ss_trash_config = {
+        autoHeight: false,
+        enableTrash: true,
+        colWidth: 1690,
+        enableDrag: false
+    };
+</script>
 
-        $('.XBeamer-chart-container button').mouseover(function(){
-            $(this).find('.XBeamer-chart-description').css('display', 'block');
-            $(this).find('.XBeamer-chart-preview').css('display', 'none');
+##########################################################################################################################
+## Sidebar 
+##########################################################################################################################
+<aside id="XBeamerSidebar" style="width: ${width}px; right: -${width}px;">
+#foreach($plugin in $plugins)
+    <div class="chart-container">
+        <button>
+            <div class="chart-preview">
+                <img class="chart-thumbnail" src="$plugin.imgUrl">
+                <div class="chart-name" value="$plugin.pluginName">$plugin.chartName</div>
+            </div>
+            <div class="chart-description" style="display:none">$plugin.chartDescription</div>
+        </button>
+    </div>
+#end
+</aside>
+
+<script type="text/javascript">
+    $(function(){
+        $('.chart-container > button').mouseover(function(){
+            $(this).children().toggle();
         }).mouseout(function(){
-            $(this).find('.XBeamer-chart-description').css('display', 'none');
-            $(this).find('.XBeamer-chart-preview').css('display', 'block');
+            $(this).children().toggle();
         }).click(function(){
             var param = {
                 page_id: ${pageId},
-                chart_name: $(this).find('.XBeamer-chart-name').attr('value')
+                chart_name: $(this).find('.chart-name').attr('value')
             };
 
             $.ajax({
@@ -76,44 +112,46 @@
                 type: 'POST',
                 data: param,
                 success: function(result) {
-                    location.reload(true);
+                    location.reload();
                 }
             });
         });
+    });
+</script>
 
-        var colapse = true;
+##########################################################################################################################
+## Menu
+##########################################################################################################################
+<a href="#" class="actionLink XBeamer-menu pos1" id="XBeamerAction-add">Add Chart</a>
+<a href="#" class="actionLink XBeamer-menu pos2" id="XBeamerAction-relocation">Relocation Mode</a>
+<a href="#" class="actionLink XBeamer-submenu pos2" id="XBeamerAction-save" style="display:none">Save</a>
+<a href="#" class="actionLink XBeamer-submenu pos1" id="XBeamerAction-cancel" style="display:none">Cancel</a>
 
-        $('#XBeamer-sidebutton').click(function(){
-            colapse = !colapse;
-            $('#XBeamer-reorder').css('display', colapse ? 'block' : 'none');
-            $('#XBeamer-sidebutton').text(colapse ? 'Add Chart' : 'Cancel');
-            $('#XBeamer-sidebar').stop().animate({right: colapse ? '-${width}' : '0'}, 200, function(){});
+<script type="text/javascript">
+    $(function(){
+        var colapsed = true;
+        $('#XBeamerAction-add').click(function(){
+            if(colapsed = !colapsed){
+                $(this).text('Add Chart');
+                $('#XBeamerAction-relocation').show();
+                $('#XBeamerSidebar').stop().animate({right: '-${width}'}, 200);
+            }else{
+                $(this).text('Cancel');
+                $('#XBeamerAction-relocation').hide();
+                $('#XBeamerSidebar').stop().animate({right: '0'}, 200);
+            }
         });
-
-        var ss_config = {
-            align: 'left',
-            enableDrag: false,
-            columns: 10
-        };
-        $('.XBeamer-contents').shapeshift(ss_config);
-
-        $('#XBeamer-reorder').click(function(){
-            $('.XBeamerMenu').each(function(){ $(this).css('display', 'none'); });
-            $('.childof-reorder').each(function(){ $(this).css('display', 'block'); });
-
-            ss_config.enableDrag = true;
-            $('.XBeamer-contents').shapeshift(ss_config);
-            $('.XBeamer-contents').addClass('active-reorder');
-
-            $('#XBeamer-trash-container').css('display', 'block').find('.XBeamer-trash').shapeshift({
-                autoHeight: false,
-                enableTrash: true,
-                colWidth: 1690,
-                enableDrag: false
-            });
+        
+        $('#XBeamerAction-relocation').click(function(){
+            $('.XBeamer-menu').hide();
+            $('.XBeamer-submenu').show();
+        
+            ss_contents_config.enableDrag = true;
+            $('.XBeamer-contents').shapeshift(ss_contents_config).addClass('active-relocation');
+            $('.XBeamer-trash').shapeshift(ss_trash_config).parent().show();
         });
-
-        $('#XBeamer-reorder-save').click(function(){
+        
+        $('#XBeamerAction-save').click(function(){
             var tags = [];
 
             $('.XBeamer-plugin').each(function(){
@@ -130,148 +168,13 @@
                 type: 'POST',
                 data: param,
                 success: function(result) {
-                    location.reload(true);
+                    location.reload();
                 }
             });
         });
 
-        $('#XBeamer-reorder-cancel').click(function(){
-            location.reload(true);
+        $('#XBeamerAction-cancel').click(function(){
+            location.reload();
         });
     });
 </script>
-
-<link rel="stylesheet" href="${xbeamerchart}stylesheet/all.less" type="text/css" media="all" />
-<script type="text/javascript" src="${xbeamerchart}js/all.js"></script>
-
-## Styles for itself
-<style type="text/css">
-    @media screen and (max-width: 640px) {
-        #XBeamer-sidebar, #XBeamer-sidebutton {
-            display: none;
-        }
-    }
-
-    #XBeamer-sidebar{
-        text-align: center;
-        top: 30px;
-        margin: 0px;
-        width: ${width}px;
-        height: 100%;
-        position: absolute;
-        overflow-y: scroll;
-        z-index: 9999;
-    }
-
-    #XBeamer-sidebutton{
-        position: absolute;
-        top: 7px;
-        right: 0px;
-        text-align: center;
-    }
-
-    #XBeamer-reorder{
-        position: absolute;
-        top: 7px;
-        right: 80px;
-        text-align: center;
-    }
-
-    #XBeamer-reorder-cancel{
-        display: none;
-        position: absolute;
-        top: 7px;
-        right: 0px;
-        text-align: center;
-    }
-
-    #XBeamer-reorder-save{
-        display: none;
-        position: absolute;
-        top: 7px;
-        right: 80px;
-        text-align: center;
-    }
-
-    .XBeamer-chart-container{
-        float: left;
-        margin: 5px;
-    }
-
-    .XBeamer-chart-container button{
-        font-family: 'arial';
-        width: 190px;
-        height: 150px;
-        padding: 0px;
-        background-color: white;
-        border: none;
-        box-shadow: 1px 1px 5px gray;
-        cursor: pointer;
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
-
-    .XBeamer-chart-name{
-        font-weight: bold;
-        font-size: 1.1em;
-    }
-
-    .XBeamer-chart-preview img{
-        width: 60%;
-    }
-
-    .XBeamer-chart-description{
-        text-align: center;
-        display: none;
-        margin: 10px 5px;
-        background-color: white;
-    }
-
-    .actionBar > a{
-        margin-right: 0 !important;
-    }
-
-    #XBeamer-trash-container {
-        display: none;
-        position: absolute;
-        left: 15px;
-        top: auto;
-        right: 25px;
-        bottom: 20px;
-        height: 190px;
-    }
-
-    .XBeamer-contents.active-reorder{
-        background: rgba(0, 255, 0, 0.3);
-    }
-
-    .XBeamer-trash {
-        text-align: center;
-        position: relative;
-        width: 100%;
-        height: 100%;
-        border: 1px dashed red;
-        vertical-align: middle;
-        background: rgba(255,0,0,0.3);
-    }
-
-    .XBeamer-trash > div{
-        font-weight: bold;
-        font-size: 24px;
-    }
-
-    .XBeamer-plugin .wikichartbox{
-        margin: 0;
-    }
-    
-    .XBeamer-plugin > .XBeamer-plugin-content{
-        height: inherit;
-        overflow-y: auto;
-        background: white;
-    }
-
-    .XBeamer-plugin .activityStreamPlugin{
-        background: white;
-        margin: 0px;
-    }
-</style>

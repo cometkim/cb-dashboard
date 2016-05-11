@@ -34,7 +34,7 @@ public class XBeamerProjectWidget extends XBeamerWidget {
     }
 
     @Override
-    public List<ProjectDto> getSubject(String paramValue) {
+    public List<ProjectDto> getObject(String paramValue) {
         return projectManager.findById(this.getUser(), Arrays.asList(paramValue.split(",")));
     }
 }

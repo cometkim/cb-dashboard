@@ -50,7 +50,7 @@ public class XBeamerIssueCountTrendsPlugin extends XBeamerWrapperPlugin {
         options.put("both", "Both");
 
         displayWidget = new XBeamerSelectWidget(context, options, false);
-        displayWidget.setDefaultArgument("chart");
+        displayWidget.setDefaultValue("chart");
         displayWidget.setLabel("Display Type (default: Chart)");
         this.addWidgetForParameter("display", displayWidget);
 

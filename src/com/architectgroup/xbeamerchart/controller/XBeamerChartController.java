@@ -9,6 +9,7 @@ import com.intland.codebeamer.persistence.dto.ReadOnlyWikiPageDto;
 import com.intland.codebeamer.persistence.dto.UserDto;
 import com.intland.codebeamer.persistence.dto.WikiPageDto;
 import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -196,7 +197,7 @@ public class XBeamerChartController extends AbstractJsonController {
     @ResponseBody
     public String reorderChart(HttpServletRequest request,
                                @RequestParam("page_id") Integer pageId,
-                               @RequestParam("tags") String tags){
+                               @RequestParam("tags") String tagsStr){
 
         UserDto user = ControllerUtils.getCurrentUser(request);
 
@@ -208,10 +209,13 @@ public class XBeamerChartController extends AbstractJsonController {
         String oldMarkup = wikiPageControllerSupport.getWikiPageContent(request, page, page.getHeadRevision(), false);
 
         String markup = "[{XBeamerChartSupport\n\n";
-        if(tags != null && !tags.isEmpty()) {
-            for (String tag : tags.split(",")) {
-                String chartName = tag.split("-")[0];
-                String chartId = tag.split("-")[1];
+
+        if(tagsStr != null && !tagsStr.isEmpty()) {
+            String[] tags = StringUtils.split(tagsStr, ",");
+            for (String tag : tags) {
+                String[] chartInfo = StringUtils.split(tag, "-");
+                String chartName = chartInfo[0];
+                String chartId = chartInfo[1];
 
                 String regex = String.format(REGEX_FORMAT, chartName, chartId);
 
@@ -222,6 +226,7 @@ public class XBeamerChartController extends AbstractJsonController {
                     markup += matcher.group() + "\n";
             }
         }
+
         markup += "}]";
 
         try {

@@ -20,7 +20,7 @@
             #foreach($order in $orders)
             <th class="first-of-order" colspan="$colspan">#if($maxOrder < 1) 0 #else $order #end</th>
             #end
-
+            <th class="total first-of-order" rowspan="2" style="width: 80px">Total</th>
         </tr>
         <tr>
             <th class="left-end">Status / Severity</th>
@@ -48,6 +48,10 @@
                     <td class="number cell">#if($!count != 0) $count #else -- #end</td>
                 #end
             #end
+
+            #set($count = 0)
+            #set($count = $!countTable["${status.name}"])
+            <td class="total">$count</td>
         </tr>
         #end
         </tbody>
@@ -66,6 +70,7 @@
                     <th class="total number">$count</th>
                 #end
             #end
+            <th class="total number first-of-order" rowspan="2">$totalCount</th>
         </tr>
         <tr>
             <th class="total">Total</th>
@@ -81,12 +86,19 @@
 </div>
 
 <style type="text/css">
+    table.IssueStatisticsByOrder{
+        border: 1px solid #ccc !important;
+    }
+
     .IssueStatisticsByOrder .left-end{
     }
 
     .IssueStatisticsByOrder .total{
-        border-bottom: 1px solid #d1d1d1;
+        border-bottom: 1px solid #d1d1d1 !important;
+        border-top: 1px solid #d1d1d1 !important;
         text-align: center !important;
+        background: #e0e0e0;
+        font-weight: bold;
     }
 
     .IssueStatisticsByOrder .cell{

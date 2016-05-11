@@ -47,7 +47,7 @@ public class XBeamerProjectActivityTrendsPlugin extends XBeamerWrapperPlugin {
         displayTypes.put("both", "Both");
 
         displayWidget = new XBeamerSelectWidget(context, displayTypes, false);
-        displayWidget.setDefaultArgument("chart");
+        displayWidget.setDefaultValue("chart");
         displayWidget.setLabel("Display Type (default: Chart)");
         this.addWidgetForParameter("display", displayWidget);
 
@@ -57,7 +57,7 @@ public class XBeamerProjectActivityTrendsPlugin extends XBeamerWrapperPlugin {
         groupingTypes.put("monthly", "Group by a Month");
 
         groupingWidget = new XBeamerSelectWidget(context, groupingTypes, false);
-        groupingWidget.setDefaultArgument("daily");
+        groupingWidget.setDefaultValue("daily");
         groupingWidget.setLabel("Grouping options (default: Daily)");
         this.addWidgetForParameter("grouping", groupingWidget);
 

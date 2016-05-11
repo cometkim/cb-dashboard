@@ -30,7 +30,7 @@ public abstract class XBeamerWidget<T extends Object>{
 
     private boolean required;
 
-    private String argument;
+    private String value;
     private String defaultValue;
 
     private Map<String, String> styleMap;
@@ -69,11 +69,11 @@ public abstract class XBeamerWidget<T extends Object>{
     public final String getShortDescription() { return this.shortDescription; }
     public final void setShortDescription(String shortDescription) { this.shortDescription = shortDescription; }
 
-    public final void setDefaultValue(String defaultArgument) { this.defaultValue = defaultArgument; }
+    public final void setDefaultValue(String defaultValue) { this.defaultValue = defaultValue; }
     public final String getDefaultValue() { return this.defaultValue; }
 
-    public final String getValue() { return this.argument != null ? this.argument : this.defaultValue; }
-    public final void setValue(String value) { this.argument = value; }
+    public final String getValue() { return this.value != null ? this.value : this.defaultValue; }
+    public final void setValue(String value) { this.value = value; }
 
     public final boolean isRequired() { return this.required; }
     public final void setRequired(boolean required) { this.required = required; }

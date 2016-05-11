@@ -37,7 +37,7 @@ public class XBeamerUserWidget extends XBeamerWidget{
 
     @Nullable
     @Override
-    public List<UserDto> getSubject(@NotNull String argument) {
+    public List<UserDto> getObject(@NotNull String argument) {
         return userDao.findById(Arrays.asList(argument.split(",")));
     }
 }

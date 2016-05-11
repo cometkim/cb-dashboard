@@ -15,8 +15,7 @@ public abstract class XBeamerWrapperPlugin extends XBeamerPlugin{
     private WikiMarkupProcessor wikiMarkupProcessor;
 
     public XBeamerWrapperPlugin(){
-        this.setFrame(false);
-
+        this.setFrame(true);
         this.setShapeColspan(5);
         this.setShapeRowspan(3);
     }

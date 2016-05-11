@@ -71,8 +71,8 @@ public class IssueStatisticsByOrderPlugin extends AutoWiringCodeBeamerPlugin {
     }
 
     private void addCountOnTable(Map<String,Integer> table, String status, String order, String severity){
-        // Total
-        String key = order;
+        // Total of row
+        String key = status;
 
         if(table.containsKey(key)){
             table.put(key, table.get(key) + 1);
@@ -81,7 +81,17 @@ public class IssueStatisticsByOrderPlugin extends AutoWiringCodeBeamerPlugin {
             table.put(key, 1);
         }
 
-        // Sub-Total
+        // Total of column
+        key = order;
+
+        if(table.containsKey(key)){
+            table.put(key, table.get(key) + 1);
+
+        }else{
+            table.put(key, 1);
+        }
+
+        // Sub-Total of column
         key += ";" + severity;
 
         if(table.containsKey(key)){
@@ -140,6 +150,7 @@ public class IssueStatisticsByOrderPlugin extends AutoWiringCodeBeamerPlugin {
             Integer maxOrder = 0;
 
             List<TrackerItemDto> items = trackerItemDao.findByTracker(trackerId);
+            velocityContext.put("totalCount", items.size());
 
             for (TrackerItemDto item : items) {
                 if (item.isDeleted() || item.isFolder() || item.isInformation()) continue;

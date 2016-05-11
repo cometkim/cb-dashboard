@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by comet on 2016-04-26.
  */
-public class XBeamerReleaseWidget extends XBeamerWidget{
+public class XBeamerReleaseWidget extends XBeamerWidget<List<TrackerItemDto>>{
     @Autowired
     private TrackerManager trackerManager;
 
@@ -34,7 +34,7 @@ public class XBeamerReleaseWidget extends XBeamerWidget{
 
     @Nullable
     @Override
-    public List<TrackerItemDto> getSubject(@NotNull String argument) {
+    public List<TrackerItemDto> getObject(@NotNull String argument) {
         return null;
     }
 }

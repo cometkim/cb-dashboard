@@ -1,6 +1,6 @@
 #parse("xbeamerchart/includes/widget-util.vm")
 
-<div class="XBeamerWidget" #widgetHelp($this) #widgetStyles($this)>
+<div class="XBeamer-widget" #widgetHelp($this) #widgetStyles($this)>
     #widgetLabel($this)
 
     <div class="$htmlTag basic">

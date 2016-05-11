@@ -6,7 +6,7 @@
     #foreach($widget in $widgets.values())
         $widget
     #end
-        <button class="XBeamerSubmit" id="Save-${chartId}">Save</button>
+        <button class="XBeamer-submit pos1" id="Save-${chartId}">Save</button>
     </div>
 </div>
 

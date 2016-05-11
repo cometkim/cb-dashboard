@@ -5,7 +5,7 @@ import com.ecyrd.jspwiki.WikiContext;
 import org.apache.velocity.VelocityContext;
 
 /**
- * Created by comet on 2016-04-26.
+ * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-04-26.
  */
 public class XBeamerTextWidget extends XBeamerBasicWidget {
     private String placeholder;
@@ -41,7 +41,7 @@ public class XBeamerTextWidget extends XBeamerBasicWidget {
     }
 
     @Override
-    public String getSubject(String paramValue) {
+    public String getObject(String paramValue) {
         return paramValue;
     }
 }

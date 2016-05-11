@@ -155,8 +155,6 @@ public abstract class XBeamerPlugin extends AbstractCodeBeamerWikiPlugin {
         boolean initialized = this.checkRequireParams();
         velocityContext.put("initialized", initialized);
 
-        this.populateContextInfo(velocityContext);
-
         if(initialized){
             this.copyParametersToWidget();
             String content = this.execute();
@@ -166,6 +164,7 @@ public abstract class XBeamerPlugin extends AbstractCodeBeamerWikiPlugin {
             this.populateWidgets(velocityContext);
         }
 
+        this.populateContextInfo(velocityContext);
         this.populateChartInfo(velocityContext);
 
         return this.renderPluginTemplate(FRAME_TEMPLATE_FILENAME, velocityContext);
@@ -185,6 +184,10 @@ public abstract class XBeamerPlugin extends AbstractCodeBeamerWikiPlugin {
             widgetContext.put("param", param);
             widgetContext.put("this", widget);
             widget.populateContext(widgetContext);
+
+            try{
+                this.populateContextInfo(widgetContext);
+            } catch (PluginException e){}
 
             this.populateChartInfo(widgetContext);
 
@@ -256,7 +259,7 @@ public abstract class XBeamerPlugin extends AbstractCodeBeamerWikiPlugin {
         for(String param : widgets.keySet()){
             XBeamerWidget widget = widgets.get(param);
             if(widget.isRequired()){
-                if((!params.containsKey(param) || params.get(param).isEmpty()) && (widget.getDefaultArgument() == null))
+                if((!params.containsKey(param) || params.get(param).isEmpty()) && (widget.getDefaultValue() == null))
                     return false;
             }
         }

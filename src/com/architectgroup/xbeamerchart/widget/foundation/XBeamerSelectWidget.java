@@ -30,7 +30,7 @@ public class XBeamerSelectWidget extends XBeamerWidget {
     }
 
     @Override
-    public String getSubject(String paramValue) {
+    public String getObject(String paramValue) {
         return paramValue;
     }
 }

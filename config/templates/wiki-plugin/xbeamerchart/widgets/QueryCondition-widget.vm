@@ -1,6 +1,6 @@
 #parse("xbeamerchart/includes/widget-util.vm")
 
-<div class="XBeamerWidget" #widgetHelp($this) #widgetStyles($this)>
+<div class="XBeamer-widget" #widgetHelp($this) #widgetStyles($this)>
     #widgetLabel($this)
 
     <div class="headerBody">
@@ -15,7 +15,7 @@
                                     <span id="ajaxLoadingImg"><img src="/cb/images/ajax-loading_16.gif" /></span>
                                 </span>
                                 <span class="inputSection">
-                                    <input type="text" id="XBeamerWidget-${param}-${chartId}">
+                                    <input type="text" id="XBeamerWidget-${param}-${chartId}" placeholder="project.id != 0">
                                 </span>
                             </td>
                         </tr>
@@ -28,6 +28,9 @@
         </div>
     </div>
 </div>
+
+#set($xbeamerchart = "${contextPath}${versionedPath}xbeamerchart/")
+<script type="text/javascript" src="${xbeamerchart}js/queryConditionWidget.js"></script>
 
 <script type="text/javascript">
     var QueryConditionWidget_${chartId} = xbeamerchart.QueryConditionWidget();

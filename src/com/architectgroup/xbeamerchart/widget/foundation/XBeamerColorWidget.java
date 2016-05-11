@@ -7,7 +7,7 @@ import org.apache.velocity.VelocityContext;
 /**
  * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-04-26.
  */
-public class XBeamerColorWidget extends XBeamerWidget {
+public class XBeamerColorWidget extends XBeamerWidget<String> {
     public XBeamerColorWidget(WikiContext ctx) {
         super(ctx, "xbeamerchart/widgets/color.vm");
 
@@ -20,7 +20,7 @@ public class XBeamerColorWidget extends XBeamerWidget {
     }
 
     @Override
-    public String getSubject(String paramValue) {
+    public String getObject(String paramValue) {
         return paramValue;
     }
 }

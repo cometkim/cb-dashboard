@@ -5,7 +5,6 @@ import java.util.*;
 import com.ecyrd.jspwiki.WikiContext;
 import com.intland.codebeamer.manager.TrackerItemManager;
 import com.intland.codebeamer.manager.TrackerManager;
-import com.intland.codebeamer.persistence.dao.TrackerLayoutDao;
 import com.intland.codebeamer.persistence.dto.*;
 import com.intland.codebeamer.persistence.dto.base.NamedDto;
 import com.intland.codebeamer.wiki.plugins.base.AbstractCodeBeamerWikiPlugin;

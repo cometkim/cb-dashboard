@@ -2,7 +2,7 @@
 #end
 
 #macro(widgetLabel $widget)
-    #if("$!widget.summary" != "")
+    #if("$!widget.label" != "")
     <span class="label#if($widget.required) mandatory#else optional#end">$widget.label</span>
     #end
 #end

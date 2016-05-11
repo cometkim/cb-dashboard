@@ -38,7 +38,7 @@ public class XBeamerIssueStatisticPlugin extends XBeamerWrapperPlugin {
 
         titleWidget = new XBeamerTextWidget(context);
         titleWidget.setLabel("Title");
-        titleWidget.setDefaultArgument("Issue Statistic");
+        titleWidget.setDefaultValue("Issue Statistic");
         this.addWidgetForParameter("title", titleWidget);
 
         fieldNameWidget = new XBeamerTextWidget(context);
@@ -48,12 +48,12 @@ public class XBeamerIssueStatisticPlugin extends XBeamerWrapperPlugin {
 
         includeWidget = new XBeamerTextWidget(context);
         includeWidget.setLabel("Includes");
-        includeWidget.setDefaultArgument("");
+        includeWidget.setDefaultValue("");
         this.addWidgetForParameter("include", includeWidget);
 
         excludeWidget = new XBeamerTextWidget(context);
         excludeWidget.setLabel("Excludes");
-        excludeWidget.setDefaultArgument("");
+        excludeWidget.setDefaultValue("");
         this.addWidgetForParameter("exclude", excludeWidget);
 
     }

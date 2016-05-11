@@ -7,3 +7,6 @@
         <span class="footer truncated-text-ellipsis">$suffix</span>
     </a>
 </div>
+
+#set($xbeamerchart = "${contextPath}${versionedPath}xbeamerchart/")
+<link rel="stylesheet" href="${xbeamerchart}stylesheet/queryTilePlugin.less" type="text/css" media="all" />

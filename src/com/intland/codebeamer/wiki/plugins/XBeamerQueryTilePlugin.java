@@ -53,14 +53,12 @@ public class XBeamerQueryTilePlugin extends XBeamerChartPlugin {
 
         cbQLWidget = new XBeamerQueryConditionWidget(context);
         cbQLWidget.setRequired(true);
-        cbQLWidget.setDefaultArgument("project.id != 0");
+        cbQLWidget.setDefaultValue("project.id != 0");
         this.addWidgetForParameter("cbQL", cbQLWidget);
 
         colorWidget = new XBeamerColorWidget(context);
         colorWidget.setLabel("Color");
-        colorWidget.setShortDescription("Select the background color");
         colorWidget.setRequired(true);
-        //colorWidget.setDefaultArgument("#0093b8");
         this.addWidgetForParameter("color", colorWidget);
 
         titleWidget = new XBeamerTextWidget(context);
@@ -82,7 +80,7 @@ public class XBeamerQueryTilePlugin extends XBeamerChartPlugin {
 
         List<TrackerItemDto> items;
         try {
-            items = cbQLWidget.getSubject();
+            items = (List<TrackerItemDto>)cbQLWidget.getObject();
         }catch (Exception e){
             e.printStackTrace();
             items = Collections.emptyList();
@@ -100,7 +98,7 @@ public class XBeamerQueryTilePlugin extends XBeamerChartPlugin {
         if(count < 1000){ // 0 ~ 999
             countText = String.valueOf(count);
         }else if(count < 10000){ // 1000 ~ 9999
-            countText = String.format("%dK", count);
+            countText = String.valueOf(count);
             fontSize = 52;
         }else if(count < 100000){ // 10K ~ 99K
             countText = String.format("%dK", count/1000);

@@ -30,7 +30,6 @@ public class XBeamerQueryConditionWidget extends XBeamerWidget {
 
     public XBeamerQueryConditionWidget(WikiContext ctx) {
         super(ctx, "xbeamerchart/widgets/QueryCondition-widget.vm");
-        // this.setSelector("input"); // Deprecated
         this.cssStyle("width", "100%");
         this.cssStyle("float", "none");
         this.cssStyle("margin-bottom", "20px");
@@ -41,7 +40,7 @@ public class XBeamerQueryConditionWidget extends XBeamerWidget {
     }
 
     @Override
-    public List<TrackerItemDto> getSubject(String paramValue){
+    public List<TrackerItemDto> getObject(String paramValue){
         UserDto user = this.getUser();
 
         int pageLength = Config.getItemsPerPage();

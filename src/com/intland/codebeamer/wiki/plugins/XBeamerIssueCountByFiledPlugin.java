@@ -51,7 +51,7 @@ public class XBeamerIssueCountByFiledPlugin extends XBeamerWrapperPlugin {
         displayTypes.put("both", "Both");
 
         displayWidget = new XBeamerSelectWidget(context, displayTypes, false);
-        displayWidget.setDefaultArgument("chart");
+        displayWidget.setDefaultValue("chart");
         displayWidget.setLabel("Display Type (default: Chart)");
         this.addWidgetForParameter("display", displayWidget);
 
@@ -69,7 +69,7 @@ public class XBeamerIssueCountByFiledPlugin extends XBeamerWrapperPlugin {
         supportedFields.put("target", "Target");
 
         fieldWidget = new XBeamerSelectWidget(context, supportedFields, false);
-        fieldWidget.setDefaultArgument("status");
+        fieldWidget.setDefaultValue("status");
         fieldWidget.setLabel("Field");
         this.addWidgetForParameter("field", fieldWidget);
 

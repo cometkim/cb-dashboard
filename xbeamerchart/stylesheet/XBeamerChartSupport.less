@@ -1,0 +1,144 @@
+/********************************************************************
+* Supported resolution is only 830px(half of design) or higher.
+********************************************************************/
+@media screen and (max-width: 830px) {
+    #XBeamerSideBar, .XBeamer-menu{
+        display: none;
+    }
+}
+
+/********************************************************************
+* Contents 
+********************************************************************/
+#XBeamer-contents-wrapper{
+    width: 1660px;
+}
+
+.XBeamer-contents{
+    position: relative;
+    width: 100%;
+    border: 1px dashed #ccc;
+    
+    &.active-reorder{
+        background: rgba(0, 255, 0, 0.3);
+    }
+    
+    & > div{
+        position: absolute;
+        width: 155px;
+        height: 155px;
+        padding: 0;
+        background: #ccc;
+        
+        &[data-ss-colspan='2']{ width: 320px; }
+        &[data-ss-colspan='3'] { width: 485px; }
+        &[data-ss-colspan='4'] { width: 650px; }
+        &[data-ss-colspan='5'] { width: 815px; }
+        &[data-ss-colspan='6'] { width: 990px; }
+        &[data-ss-colspan='7'] { width: 1155px; }
+        &[data-ss-colspan='8'] { width: 1320px; }
+        &[data-ss-colspan='9'] { width: 1485px; }
+        &[data-ss-colspan='10'] { width: 1650px; }
+
+        &[data-ss-rowspan='2'] { height: 320px; }
+        &[data-ss-rowspan='3'] { height: 485px; }
+        &[data-ss-rowspan='4'] { height: 650px; }
+        &[data-ss-rowspan='5'] { height: 815px; }
+        &[data-ss-rowspan='6'] { height: 990px; }
+        &[data-ss-rowspan='7'] { height: 1155px; }
+        &[data-ss-rowspan='8'] { height: 1320px; }
+        &[data-ss-rowspan='9'] { height: 1485px; }
+        &[data-ss-rowspan='10'] { height: 1650px; }
+    }
+
+    .ss-placeholder-child {
+        background: transparent;
+        border: 1px dashed red;
+    }
+}
+
+/********************************************************************
+* Trash 
+********************************************************************/
+#XBeamer-trash-wrapper{
+    position: absolute;
+    left: 15px;
+    top: auto;
+    right: 25px;
+    bottom: 20px;
+    height: 190px;
+}
+
+.XBeamer-trash{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1px dashed red;
+    text-align: center;
+    background: rgba(255,0,0,0.3);
+    
+    & > div{
+        margin-top: 10px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+}
+
+/********************************************************************
+* Sidebar 
+*********************************************************************/
+#XBeamerSidebar{
+    position: absolute;
+    top: 30px;
+    height: 100%;
+    overflow-y: scroll;
+    z-index: 9999;
+    
+    .chart-container{
+        float: left;
+        margin: 5px;
+        
+        button{
+            font-family: 'Arial, Helvetica, sans-serif';
+            width: 190px;
+            height: 150px;
+            padding: 0;
+            background: white;
+            border: none;
+            box-shadow: 1px 1px 5px gray;
+            cursor: pointer;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+    }
+    
+    .chart-name{
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+    
+    .chart-thumbnail{
+        width: 60%;
+    }
+    
+    .chart-description{
+        text-align: center;
+        margin: 10px;
+    }
+}
+
+/********************************************************************
+* Menu 
+*********************************************************************/
+.XBeamer-menu, .XBeamer-submenu{
+    position: absolute;
+    top: 7px;
+}
+
+.actionLink.pos1{
+    right: 0px;
+}
+
+.actionLink.pos2{
+    right: 80px;
+}

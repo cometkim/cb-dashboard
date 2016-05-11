@@ -8,9 +8,9 @@ import javax.annotation.Nullable;
 import javax.validation.constraints.NotNull;
 
 /**
- * Created by comet on 2016-04-25.
+ * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-04-25.
  */
-public class XBeamerBooleanWidget extends XBeamerWidget{
+public class XBeamerBooleanWidget extends XBeamerWidget<Boolean>{
     public XBeamerBooleanWidget(WikiContext ctx) {
         super(ctx, "xbeamerchart/widgets/boolean.vm");
 
@@ -23,7 +23,7 @@ public class XBeamerBooleanWidget extends XBeamerWidget{
 
     @Nullable
     @Override
-    public Boolean getSubject(@NotNull String argument) {
+    public Boolean getObject(@NotNull String argument) {
         return Boolean.parseBoolean(argument);
     }
 }

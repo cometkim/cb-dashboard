@@ -1,0 +1,63 @@
+@baseColor: #454545;
+
+.XBeamer-widgetbox{
+    width: 100%;
+    height: inherit;
+    border: 1px solid @baseColor;
+    padding: 0px;
+    list-style-type: none;
+    background: white;
+    
+    & > .header{
+        padding-left: 5px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid @baseColor;
+        background: @baseColor;
+        color: white;
+        
+        h3{
+            margin: 0;
+            border-bottom: none !important;
+        }
+        
+        .ui-icon{
+            float: right !important;
+            right: 0px;
+            margin: 5px;
+            filter: brightness(100);
+            -webkit-filter: brightness(100);
+            -moz-filter: brightness(100);
+            -o-filter: brightness(100);
+            -ms-filter: brightness(100);
+        }
+    }
+    
+    & > .content{
+        padding: 20px;
+    }
+    
+    .XBeamer-submit{
+        position: absolute;
+        bottom: 10px;
+        
+        &.pos1{
+            left: 20px;
+        }
+    }
+}
+
+.XBeamer-widget{
+    float: left;
+    
+    & > .label{
+        text-align: left;
+    }
+    
+    .headerBody{
+        padding: 0;
+        
+        .conditionSelector{
+            width: 100%;
+        }
+    }
+}

@@ -54,7 +54,7 @@ public class XBeamerTrackerWidget extends XBeamerWidget {
     }
 
     @Override
-    public List<TrackerDto> getSubject(String paramValue) {
+    public List<TrackerDto> getObject(String paramValue) {
         UserDto user = this.getUser();
         return trackerManager.findById(user, Arrays.asList(paramValue.split(",")));
     }
