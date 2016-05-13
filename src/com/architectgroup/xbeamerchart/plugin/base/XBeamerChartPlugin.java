@@ -30,6 +30,7 @@ public abstract class XBeamerChartPlugin extends XBeamerPlugin {
         Map params = this.getPluginParams();
 
         VelocityContext velocityContext = this.getDefaultVelocityContextFromContext(this.getWikiContext(), params);
+        this.populateContextInfo(velocityContext);
         this.populateContext(velocityContext, params);
 
         String html = this.renderPluginTemplate(this.getTemplateFilename(), velocityContext);

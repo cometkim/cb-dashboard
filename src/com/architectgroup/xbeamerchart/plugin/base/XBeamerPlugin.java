@@ -173,8 +173,9 @@ public abstract class XBeamerPlugin extends AbstractCodeBeamerWikiPlugin {
     /**
      * populate all param-widget pairs.
      * @param velocityContext
+     * @exception PluginException
      */
-    private final void populateWidgets(VelocityContext velocityContext){
+    private final void populateWidgets(VelocityContext velocityContext) throws PluginException{
         Map<String, String> widgetContents = new LinkedHashMap<>();
 
         for (String param : this.widgets.keySet()) {
@@ -185,10 +186,7 @@ public abstract class XBeamerPlugin extends AbstractCodeBeamerWikiPlugin {
             widgetContext.put("this", widget);
             widget.populateContext(widgetContext);
 
-            try{
-                this.populateContextInfo(widgetContext);
-            } catch (PluginException e){}
-
+            this.populateContextInfo(widgetContext);
             this.populateChartInfo(widgetContext);
 
             widgetContents.put(param, this.renderPluginTemplate(widget.getFileName(), widgetContext));

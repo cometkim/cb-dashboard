@@ -37,6 +37,8 @@
 
 <link rel="stylesheet" href="${xbeamerchart}stylesheet/plugin.less" type="text/css" media="all" />
 
+<link rel="stylesheet" href="${xbeamerchart}stylesheet/queryTilePlugin.less" type="text/css" media="all" />
+
 ##########################################################################################################################
 ## Contents
 ##########################################################################################################################
