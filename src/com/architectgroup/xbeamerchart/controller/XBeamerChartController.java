@@ -152,7 +152,6 @@ public class XBeamerChartController extends AbstractJsonController {
             return JsonView.SUCCESS_FALSE;
         }
 
-        //return JsonView.SUCCESS_TRUE;
         return JsonView.SUCCESS_TRUE;
     }
 
