@@ -5,12 +5,14 @@
             <div class="header">
                 <h3>$chartName</h3>
             </div>
-            <div class="content">
-                $content
+            <div class="content-wrapper">
+                <div class="content">
+                    $content
+                </div>
             </div>
         </div>
     #else
-        <div class="XBeamer-plugin-content">$content</div>
+        <div class="content">$content</div>
     #end
 #else
     #parse("xbeamerchart/includes/widget-box.vm")

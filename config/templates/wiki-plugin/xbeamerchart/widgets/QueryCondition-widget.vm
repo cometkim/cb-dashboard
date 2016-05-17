@@ -15,7 +15,9 @@
                                     <span id="ajaxLoadingImg"><img src="/cb/images/ajax-loading_16.gif" /></span>
                                 </span>
                                 <span class="inputSection">
-                                    <input type="text" id="XBeamerWidget-${param}-${chartId}" placeholder="project.id != 0">
+                                    <input type="text" id="XBeamerWidget-${param}-${chartId}"
+                                           #if("$!this.value" != "")value="$this.value"#end
+                                           #if("$!this.defaultValue" != "")placeholder="$this.defaultValue"#end>
                                 </span>
                             </td>
                         </tr>

@@ -4,7 +4,9 @@
     #widgetLabel($this)
 
     <div class="select">
-        <select #if($multiple)multiple#end id="XBeamerWidget-${param}-${chartId}">
+        <select #if($multiple)multiple#end id="XBeamerWidget-${param}-${chartId}"
+                                           #if("$!this.value" != "")value="$this.value"#end
+                                           #if("$!this.defaultValue" != "")placeholder="$this.defaultValue"#end>
         #foreach($option in $options.keySet())
             <option value="$option">$options.get($option)</option>
         #end

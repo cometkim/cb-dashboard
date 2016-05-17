@@ -4,6 +4,9 @@
     #widgetLabel($this)
 
     <div class="$htmlTag basic">
-        <$htmlTag id="XBeamerWidget-${param}-${chartId}" #foreach($attr in $attributes.keySet()) $attr="$attributes.get($attr)"#end></$htmlTag>
+        <$htmlTag id="XBeamerWidget-${param}-${chartId}"
+        #if("$!this.value" != "")value="$this.value"#end
+        #if("$!this.defaultValue" != "")placeholder="$this.defaultValue"#end
+        #foreach($attr in $attributes.keySet()) $attr="$attributes.get($attr)"#end></$htmlTag>
     </div>
 </div>

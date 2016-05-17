@@ -4,7 +4,9 @@
     #widgetLabel($this)
 
     <div class="input color">
-        <input type="text" id="XBeamerWidget-${param}-${chartId}" readonly="readonly">
+        <input type="text" id="XBeamerWidget-${param}-${chartId}" readonly="readonly"
+               #if("$!this.value" != "")value="$this.value"#end
+               #if("$!this.defaultValue" != "")placeholder="$this.defaultValue"#end>
         <a href="#" class="colorPicker yui-skin-sam" id="${param}_${chartId}-colorPicker-icon"
            onclick="colorPicker.showPalette(this, 'XBeamerWidget-${param}-${chartId}', true); return false;">
             <img src="/cb/images/color_swatch.png">

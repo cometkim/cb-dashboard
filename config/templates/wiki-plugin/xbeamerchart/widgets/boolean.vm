@@ -4,8 +4,10 @@
     #widgetLabel($this)
 
     <div class="input boolean">
-        <input id="XBeamerWidget-${param}-${chartId}" type="hidden" value="false">
-        <input class="toggle" type="checkbox">
+        <input id="XBeamerWidget-${param}-${chartId}" type="hidden" value="false"
+               #if("$!this.value" != "")value="$this.value"#end
+               #if("$!this.defaultValue" != "")placeholder="$this.defaultValue"#end>
+        <input class="toggle" type="checkbox" #if("$!this.value" == "true")checked="checked"#end>
     </div>
 </div>
 
