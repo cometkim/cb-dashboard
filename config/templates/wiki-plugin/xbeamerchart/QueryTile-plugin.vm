@@ -4,6 +4,6 @@
         <div class="number-wrapper">
             <div class="big-count truncated-text-ellipsis" style="font-size: ${fontSize}px">$countText</div>
         </div>
-        <span class="footer truncated-text-ellipsis">$suffix</span>
+        <span class="footer truncated-text-ellipsis">$!suffix</span>
     </a>
 </div>
