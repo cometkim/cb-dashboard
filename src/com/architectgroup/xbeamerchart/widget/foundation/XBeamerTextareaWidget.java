@@ -11,8 +11,6 @@ public class XBeamerTextareaWidget extends XBeamerBasicWidget {
     private int cols;
     private int rows;
 
-    private String placeholder;
-
     private boolean disable = false;
     private boolean readonly = false;
 
@@ -21,10 +19,6 @@ public class XBeamerTextareaWidget extends XBeamerBasicWidget {
         this.cols = cols;
         this.rows = rows;
     }
-
-    public String getPlaceholder(){ return this.placeholder; }
-
-    public void setPlaceholder(String placeholder){ this.placeholder = placeholder; }
 
     public boolean isDisable(){ return this.disable; }
 
@@ -42,8 +36,6 @@ public class XBeamerTextareaWidget extends XBeamerBasicWidget {
     public void populateContext(VelocityContext velocityContext) {
         this.attribute("cols", this.cols);
         this.attribute("rows", this.rows);
-
-        this.attribute("placeholder", this.placeholder);
 
         if(this.disable) this.attribute("disable", "disable");
         if(this.readonly) this.attribute("readonly", "readonly");

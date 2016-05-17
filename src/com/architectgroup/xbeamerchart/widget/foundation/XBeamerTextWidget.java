@@ -8,8 +8,6 @@ import org.apache.velocity.VelocityContext;
  * Created by Hyeseong Kim <hyeseong.kim@architectgroup.com> on 2016-04-26.
  */
 public class XBeamerTextWidget extends XBeamerBasicWidget {
-    private String placeholder;
-
     private boolean disable = false;
     private boolean readonly = false;
 
@@ -17,10 +15,6 @@ public class XBeamerTextWidget extends XBeamerBasicWidget {
         super(ctx, "input");
         this.attribute("type", "text");
     }
-
-    public String getPlaceholder(){ return this.placeholder; }
-
-    public void setPlaceholder(String placeholder){ this.placeholder = placeholder; }
 
     public boolean isDisable(){ return this.disable; }
 
@@ -32,8 +26,6 @@ public class XBeamerTextWidget extends XBeamerBasicWidget {
 
     @Override
     public void populateContext(VelocityContext velocityContext) {
-        this.attribute("placeholder", this.placeholder);
-
         if(this.disable) this.attribute("disable", "disable");
         if(this.readonly) this.attribute("readonly", "readonly");
 
