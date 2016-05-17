@@ -155,8 +155,9 @@ public abstract class XBeamerPlugin extends AbstractCodeBeamerWikiPlugin {
         boolean initialized = this.checkRequireParams();
         velocityContext.put("initialized", initialized);
 
+        this.copyParametersToWidget();
+
         if(initialized){
-            this.copyParametersToWidget();
             String content = this.execute();
             velocityContext.put("content", content);
 
