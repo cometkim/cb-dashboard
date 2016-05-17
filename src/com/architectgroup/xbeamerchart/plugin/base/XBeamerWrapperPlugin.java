@@ -25,7 +25,7 @@ public abstract class XBeamerWrapperPlugin extends XBeamerPlugin{
         String markup = "[{" + this.getOriginPlugin().getSimpleName();
         for(String param : this.widgets.keySet()) {
             String paramValue = this.widgets.get(param).getValue();
-            if(paramValue != null || paramValue.isEmpty())
+            if(paramValue != null && !paramValue.isEmpty())
                 markup += " " + param + "='" + paramValue + "'";
         }
         markup += "}]";
