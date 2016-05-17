@@ -70,33 +70,36 @@ public class IssueStatisticsByOrderPlugin extends AutoWiringCodeBeamerPlugin {
         return "IssueStatisticsByOrder-plugin.vm";
     }
 
+    private int totalCount = 0;
+
     private void addCountOnTable(Map<String,Integer> table, String status, String order, String severity){
-        // Total of row
-        String key = status;
+        totalCount++;
+
+        String key;
+
+        // Total of columns
+        key = status;
 
         if(table.containsKey(key)){
             table.put(key, table.get(key) + 1);
-
         }else{
             table.put(key, 1);
         }
 
-        // Total of column
+        // Total of rows
         key = order;
 
         if(table.containsKey(key)){
             table.put(key, table.get(key) + 1);
-
         }else{
             table.put(key, 1);
         }
 
-        // Sub-Total of column
+        // Sub-Total of rows
         key += ";" + severity;
 
         if(table.containsKey(key)){
             table.put(key, table.get(key) + 1);
-
         }else{
             table.put(key, 1);
         }
@@ -106,11 +109,9 @@ public class IssueStatisticsByOrderPlugin extends AutoWiringCodeBeamerPlugin {
 
         if(table.containsKey(key)){
             table.put(key, table.get(key) + 1);
-
         }else{
             table.put(key, 1);
         }
-
     }
 
     @Override
@@ -150,7 +151,6 @@ public class IssueStatisticsByOrderPlugin extends AutoWiringCodeBeamerPlugin {
             Integer maxOrder = 0;
 
             List<TrackerItemDto> items = trackerItemDao.findByTracker(trackerId);
-            velocityContext.put("totalCount", items.size());
 
             for (TrackerItemDto item : items) {
                 if (item.isDeleted() || item.isFolder() || item.isInformation()) continue;
@@ -209,7 +209,7 @@ public class IssueStatisticsByOrderPlugin extends AutoWiringCodeBeamerPlugin {
                     if (maxOrder < orderValue) maxOrder = orderValue;
 
                 } else {
-                    order = "0";
+                    order = "--";
                 }
 
                 // Column 2
@@ -240,6 +240,8 @@ public class IssueStatisticsByOrderPlugin extends AutoWiringCodeBeamerPlugin {
             // Key of Column 2
             velocityContext.put("orderBy", orderBy);
             velocityContext.put("maxOrder", maxOrder);
+
+            velocityContext.put("totalCount", this.totalCount);
 
         }catch (NullPointerException e){
             e.printStackTrace();

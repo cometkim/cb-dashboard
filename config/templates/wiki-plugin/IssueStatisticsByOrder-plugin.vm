@@ -8,17 +8,17 @@
         #set($colspan = $severities.size() + 1)
 
     <table class="embedded IssueStatisticsByOrder">
+        #set($orders = ["--"])
         #if($maxOrder > 1)
-            #set($orders = [1..$maxOrder])
-        #else
-            #set($orders = [$maxOrder])
+            #set($orderCounts = [1..$maxOrder])
+            $orders.addAll($orderCounts)
         #end
 
         <thead>
         <tr>
             <th class="left-end">$orderBy:</th>
             #foreach($order in $orders)
-            <th class="first-of-order" colspan="$colspan">#if($maxOrder < 1) 0 #else $order #end</th>
+            <th class="first-of-order" colspan="$colspan">$order</th>
             #end
             <th class="total first-of-order" rowspan="2" style="width: 80px">Total</th>
         </tr>
