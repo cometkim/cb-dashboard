@@ -72,7 +72,7 @@ public abstract class XBeamerWidget<T extends Object>{
     public final void setDefaultValue(String defaultValue) { this.defaultValue = defaultValue; }
     public final String getDefaultValue() { return this.defaultValue; }
 
-    public final String getValue() { return this.value != null ? this.value : this.defaultValue; }
+    public final @Nullable String getValue() { return this.value != null && !this.value.isEmpty() ? this.value.replace('^', '\'') : this.defaultValue; }
     public final void setValue(String value) { this.value = value; }
 
     public final boolean isRequired() { return this.required; }
