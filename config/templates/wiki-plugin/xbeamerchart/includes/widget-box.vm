@@ -2,11 +2,13 @@
     <div class="header">
         <h3>$chartName</h3>
     </div>
-    <div class="content">
-    #foreach($widget in $widgets.values())
-        $widget
-    #end
-        <button class="XBeamer-submit pos1" id="Save-${chartId}">Save</button>
+    <div class="content-wrapper">
+        <div class="content">
+        #foreach($widget in $widgets.values())
+            $widget
+        #end
+            <button class="XBeamer-submit pos1" id="Save-${chartId}">Save</button>
+        </div>
     </div>
 </div>
 
@@ -22,8 +24,12 @@
             #set($selector = "#XBeamerWidget-${param}-${chartId}")
 
             var value = replaceAll(String($("$selector").val()), "'", "^");
-
-            params += " ${param}='" + value + "'";
+            if(!value){
+                value = $("$selector").attr('placeholder');
+            }
+            if(value) {
+                params += " ${param}='" + value + "'";
+            }
         #end
 
         $.ajax({
